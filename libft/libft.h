@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 21:30:52 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/22 23:28:46 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/06 02:50:25 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,14 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 							void (*del)(void *));
 char			*ft_strcpy(char *dest, const char *src);
+int				ft_putchar(int c);
+void			ft_putstr(char *s);
+char			*ft_strcat(char *dest, const char *src);
+int				ft_strcmp(const char *s1, const char *s2);
+void			ft_putnbr(int n);
+char			*ft_strncpy(char *dest, const char *src, size_t n);
+char			*ft_strncat(char *dest, const char *src, size_t n);
+char			*ft_strndup(const char *s, size_t n);
+char			*ft_strstr(const char *haystack, const char *needle);
 
 #endif

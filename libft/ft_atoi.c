@@ -6,11 +6,9 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 00:21:27 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/13 01:23:48 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/05 23:55:02 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int				ft_atoi(const char *nptr)
 {

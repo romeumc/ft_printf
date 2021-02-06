@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strcat_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 14:52:24 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/05 23:55:58 by rmartins         ###   ########.fr       */
+/*   Created: 2021/02/05 23:37:17 by rmartins          #+#    #+#             */
+/*   Updated: 2021/02/06 00:07:14 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "libft.h"
+
+char	*ft_strcat(char *dest, const char *src)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	int		i;
+	int		j;
+
+	i = ft_strlen(dest);
+	j = 0;
+	while (src[j] != '\0')
+	{
+		dest[i + j] = src[j];
+		j++;
+	}
+	dest[i + j] = '\0';
+	return (dest);
 }

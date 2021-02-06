@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 14:52:24 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/05 23:55:58 by rmartins         ###   ########.fr       */
+/*   Created: 2021/02/05 23:26:04 by rmartins          #+#    #+#             */
+/*   Updated: 2021/02/06 00:24:48 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "libft.h"
+
+void	ft_putstr(char *s)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (s != NULL && s[i] != '\0')
+	{
+		ft_putchar(s[i]);
+		i++;
+	}
 }

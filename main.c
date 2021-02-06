@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 14:52:24 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/05 23:55:58 by rmartins         ###   ########.fr       */
+/*   Created: 2021/02/05 20:55:17 by rmartins          #+#    #+#             */
+/*   Updated: 2021/02/05 22:36:36 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "include/libftprintf.h"
+#include "libft/libft.h"
+#include <stdio.h>
+
+int	main(void)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	char romeu[]="romeu carvalho";
+	size_t temp;
+
+	temp = ft_strlen(romeu);
+	printf("len:%ld\n", temp);
+	ft_printf("sssdsc", "abc", "def", "hij", 12, "   ", 't');
 }

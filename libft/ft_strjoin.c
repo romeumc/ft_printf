@@ -6,13 +6,13 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 22:49:20 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/14 00:06:23 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/05 23:45:15 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_strcat(char *dest, char *src)
+static char	*ft_strcat_bonus1(char *dest, char *src)
 {
 	int		i;
 	int		j;
@@ -42,6 +42,6 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	if (ptr == NULL)
 		return (NULL);
 	ft_strlcpy(ptr, s1, len_s1 + 1);
-	ptr = ft_strcat(ptr, (char *)s2);
+	ptr = ft_strcat_bonus1(ptr, (char *)s2);
 	return (ptr);
 }

@@ -6,11 +6,9 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 23:59:16 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/12 22:54:23 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/05 23:55:51 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isalpha(int c)
 {

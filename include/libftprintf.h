@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 14:52:24 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/05 23:55:58 by rmartins         ###   ########.fr       */
+/*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
+/*   Updated: 2021/02/05 23:08:15 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
-{
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
-}
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
+
+int	ft_printf(const char *fmt, ...);
+
+#endif

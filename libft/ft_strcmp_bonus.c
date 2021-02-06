@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 14:52:24 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/05 23:55:58 by rmartins         ###   ########.fr       */
+/*   Created: 2021/02/06 00:46:54 by rmartins          #+#    #+#             */
+/*   Updated: 2021/02/06 00:57:12 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	int				i;
+	unsigned char	*a;
+	unsigned char	*b;
+
+	a = (unsigned char*)s1;
+	b = (unsigned char*)s2;
+	i = 0;
+	while (a[i] == b[i] && a[i] != '\0' && b[i] != '\0')
+		i++;
+	return (a[i] - b[i]);
 }
