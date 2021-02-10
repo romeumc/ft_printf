@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strequ_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/10 16:10:12 by rmartins         ###   ########.fr       */
+/*   Created: 2021/02/10 14:45:02 by rmartins          #+#    #+#             */
+/*   Updated: 2021/02/10 15:00:01 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include <stdarg.h>
-# include <stdio.h>
-# include "../libft/libft.h"
-# include "ft_ansi.h"
-# include <malloc.h>
-
-typedef struct s_format
+int	ft_strequ(char *s1, char *s2)
 {
-	char	*conversion;
-}	t_format;
-
-int		ft_printf(const char *fmt, ...);
-void	parse_fmt(size_t *i, const char *fmt, t_format *format);
-void	make_conversion(t_format *format, char **output, va_list ap);
-
-#endif
+	if (!s1 || !s2)
+		return (0);
+	if (ft_strcmp(s1, s2) == 0)
+		return (1);
+	else
+		return (0);
+}

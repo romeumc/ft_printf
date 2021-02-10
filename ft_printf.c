@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 23:03:02 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/10 12:40:10 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/10 16:58:43 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,82 +36,48 @@ void	init_list(t_format *format)
 	format->conversion = "";
 }
 
-char *get_convertion(char fmt_char)
-{
-	if (fmt_char == 's')
-		return ("string");
-	if (fmt_char == 'd')
-		return ("decimal");
-	if (fmt_char == 'c')
-		return ("char");
-	if (fmt_char == '%')
-		return ("percentage");
-	else
-		return (NULL);
-}
-
-void	parse_fmt(int *i, const char *fmt, t_format *format)
-{
-	*i += 1;
-	// colocar check para FIELD WITDTH e incrementar se for diferente de null
-	// colocar check para PRECISION
-	// colocar check para LENGHT MODIFIER
-	format->conversion = get_convertion(fmt[*i]);
-}
-
 int	ft_printf(const char *fmt, ...)
 {
 	va_list		ap;
 	t_format	format;
-	// int			d;
-	// char		c;
-	// char		*s;
-	int			i;
+	char		*output;
+	size_t		i;
 
 	if (fmt == NULL)
 		return (0);
 	init_list(&format);
+	output = ft_calloc(1, sizeof(char));
 	i = 0;
-	printf("full format: %s\n", fmt);
+	//printf(ANSI_F_YELLOW "full format: [%s]\n" ANSI_RESET, fmt);
 	va_start(ap, fmt);
 	while (fmt[i] != '\0')
 	{
-		printf (ANSI_F_CYAN "i:%d fmt[%d]:%c - conversion:[%s] !!!!\n" ANSI_RESET, i, i, fmt[i], format.conversion);
+		//printf (ANSI_F_CYAN "i:%ld fmt[%ld]:%c - conversion:[%s] !!!!\n" ANSI_RESET, i, i, fmt[i], format.conversion);
 		if (fmt[i] == '%')
 		{
-			printf(ANSI_B_BRED "%% i:%d ==> " ANSI_RESET, i);
 			parse_fmt(&i, fmt, &format);
-			printf(ANSI_B_BRED "i:%d - conversion:[%s]" ANSI_RESET "\n" , i, format.conversion);
-			
+			//printf(ANSI_B_BGREEN "i:%ld - conversion:[%s]" ANSI_RESET "\n", i, format.conversion);
+
 			if (format.conversion == NULL)
+			{
+				free(output);
 				return (0);
-			printf(" compare:%d (%s) ", ft_strcmp(format.conversion, "decimal"), format.conversion);
-			//if (ft_strcmp(format.conversion, "percentage") == 0)
-				ft_putchar('%');
+			}
+			make_conversion(&format, &output, ap);
+			
 		}
 		else
 		{
-			printf("[%c] ", fmt[i]);
-			ft_putchar(fmt[i]);
+			//printf("[%c] ", fmt[i]);
+			output = ft_strdup_join(output, fmt[i]);
 		}
-		// if (fmt[i] == 's')
-		// {
-		// 	s = va_arg(ap, char *);
-		// 	printf("i:%d %c - string: %s\n", i, fmt[i], s);
-		// }
-		// if (fmt[i] == 'd')
-		// {
-		// 	d = va_arg(ap, int);
-		// 	printf("i:%d %c - int: %d\n", i, fmt[i], d);
-		// }
-		// if (fmt[i] == 'c')
-		// {
-		// 	c = (char)va_arg(ap, int);
-		// 	/* need a cast here since va_arg only takes fully promoted types */
-		// 	printf("i:%d %c - char: %c\n", i, fmt[i], c);
-		// }
 		i++;
 	}
 	va_end(ap);
-	return (0);
+	//printf("OUTPUT\n");
+	i = ft_strlen(output);
+	ft_putstr(output);
+	//printf(ANSI_F_BBLACK"\nmaloc:%ld | outputlen:%ld"ANSI_RESET, malloc_usable_size(output), ft_strlen(output));
+	free(output);
+	return ((int)i);
 }

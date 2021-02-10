@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/10 12:24:54 by rmartins         ###   ########.fr        #
+#    Updated: 2021/02/10 16:13:53 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ AR = ar rcs
 OBJ_DIR = obj/
 OBJ = $(SRC:%.c=$(OBJ_DIR)%.o)
 
-SRC = ft_printf.c
+SRC = ft_printf.c \
+		src/parse_fmt.c \
+		src/make_conversion.c
 
 all: $(NAME)
 
@@ -39,6 +41,7 @@ $(OBJ): | $(OBJ_DIR)
 $(OBJ_DIR):
 	@echo $(ANSI_B_BGREEN) "create obj folder if needed" $(ANSI_RESET)$(ANSI_F_BBLACK)
 	mkdir $@
+	mkdir $@src
 	@echo $(ANSI_RESET) ""
 
 clean:

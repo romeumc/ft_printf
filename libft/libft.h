@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 21:30:52 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/10 13:40:36 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/10 14:47:44 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ int			ft_islower(int c);
 int			ft_isupper(int c);
 int			ft_ispunct(int c);
 char		*ft_strdup_join(char *s, char c);
+int			ft_strequ(char *s1, char *s2);
 
 #endif
