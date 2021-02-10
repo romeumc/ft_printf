@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_strdup_join_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/06 02:40:22 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/07 22:48:27 by rmartins         ###   ########.fr       */
+/*   Created: 2021/02/10 13:06:33 by rmartins          #+#    #+#             */
+/*   Updated: 2021/02/10 13:08:36 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strndup(const char *s, size_t n)
+char	*ft_strdup_join(char *s, char c)
 {
-	size_t	i;
+	int		i;
 	char	*temp;
 
-	if (ft_strlen(s) > n)
-		i = n;
-	else
-		i = ft_strlen(s);
-	temp = (char *)malloc(i + 1);
 	i = 0;
-	if (temp != NULL)
+	temp = malloc(sizeof(char) * (ft_strlen(s) + 2));
+	if (temp == NULL)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		while (s[i] != '\0' && i < n)
-		{
-			temp[i] = s[i];
-			i++;
-		}
-		temp[i] = '\0';
-		return (temp);
+		temp[i] = s[i];
+		i++;
 	}
-	return (NULL);
+	temp[i++] = c;
+	temp[i] = '\0';
+	free(s);
+	return (temp);
 }

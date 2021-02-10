@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 23:21:30 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/16 18:43:24 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/07 22:34:28 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 static int	get_size(int number)
 {
-	int i;
+	int	i;
 
-	i = (number <= 0) ? 1 : 0;
+	if (number <= 0)
+		i = 1;
+	else
+		i = 0;
 	while (number != 0)
 	{
 		number /= 10;
@@ -27,17 +30,23 @@ static int	get_size(int number)
 
 static void	ft_putnbr_str(int nb, char *str, int len)
 {
+	int	sign;
+
 	if (nb < 0)
 		str[0] = '-';
 	while (nb != 0)
 	{
 		len--;
-		str[len] = '0' + ((nb < 0) ? -1 : 1) * (nb % 10);
+		if (nb < 0)
+			sign = -1;
+		else
+			sign = 1;
+		str[len] = sign * (nb % 10) + '0';
 		nb /= 10;
 	}
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		len;
 	char	*str;

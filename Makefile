@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/06 03:26:27 by rmartins         ###   ########.fr        #
+#    Updated: 2021/02/10 12:24:54 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ AR = ar rcs
 OBJ_DIR = obj/
 OBJ = $(SRC:%.c=$(OBJ_DIR)%.o)
 
-SRC = ft_printf.c teste.c
+SRC = ft_printf.c
 
 all: $(NAME)
 
@@ -57,17 +57,22 @@ re: fclean all
 	
 .PHONY: all clean fclean
 
-
-
-
 norm:
-	@echo $(ANSI_B_RED) "norminette *.c" $(ANSI_RESET)
-	norminette -R CheckForbiddenSourceHeader $(SRC)
-	@echo $(ANSI_B_RED) "norminette *.h" $(ANSI_RESET)
-	norminette $(HEADER)
+	@echo $(ANSI_B_RED) "norminette" $(ANSI_RESET)
+	@norminette $(HEADER) $(SRC)
+
+libnorm:
+	@echo $(ANSI_B_RED) "libft norminette" $(ANSI_RESET)
+	$(MAKE) norm -C libft
+
+
 run: all
+	@echo $(ANSI_B_RED) "Running for debbuger without sanitize" $(ANSI_RESET)
+	@gcc $(CFLAGS) -g3 main.c $(NAME) && ./a.out
+
+runs: all
 	@echo $(ANSI_B_RED) "Running with sanitize" $(ANSI_RESET)
-	@gcc $(CFLAGS) -fsanitize=address main.c $(NAME) && ./a.out | cat -e
+	@gcc $(CFLAGS) -g3 -fsanitize=address main.c $(NAME) && ./a.out
 
 # colors
 ANSI_RESET = "\033[0m"

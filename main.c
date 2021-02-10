@@ -6,12 +6,11 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:55:17 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/05 22:36:36 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/10 12:40:19 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/libftprintf.h"
-#include "libft/libft.h"
 #include <stdio.h>
 
 int	main(void)
@@ -21,5 +20,9 @@ int	main(void)
 
 	temp = ft_strlen(romeu);
 	printf("len:%ld\n", temp);
-	ft_printf("sssdsc", "abc", "def", "hij", 12, "   ", 't');
+	printf("abc" "def\n");
+	
+	
+	ft_printf("testes%sdddds%s%d%esc" "romeu." "teste", "abc", "def", "hij", 12, "   ", 't');
+
 }

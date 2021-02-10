@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 19:46:25 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/16 19:52:14 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/07 22:41:11 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s != NULL && s[i] != '\0')

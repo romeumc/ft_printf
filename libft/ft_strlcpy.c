@@ -6,14 +6,14 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:08:40 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/13 22:43:48 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/07 22:43:17 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
-size_t		ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	len_src;

@@ -6,11 +6,11 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 00:46:54 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/06 00:57:12 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/07 22:41:55 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	int				i;
 	unsigned char	*a;

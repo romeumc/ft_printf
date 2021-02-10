@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_iscntrl_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/06 02:40:22 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/07 22:48:27 by rmartins         ###   ########.fr       */
+/*   Created: 2021/02/07 16:25:53 by rmartins          #+#    #+#             */
+/*   Updated: 2021/02/07 16:32:07 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strndup(const char *s, size_t n)
+int	ft_iscntrl(int c)
 {
-	size_t	i;
-	char	*temp;
-
-	if (ft_strlen(s) > n)
-		i = n;
+	if ((c >= 0 && c < 32) || c == 127)
+		return (1);
 	else
-		i = ft_strlen(s);
-	temp = (char *)malloc(i + 1);
-	i = 0;
-	if (temp != NULL)
-	{
-		while (s[i] != '\0' && i < n)
-		{
-			temp[i] = s[i];
-			i++;
-		}
-		temp[i] = '\0';
-		return (temp);
-	}
-	return (NULL);
+		return (0);
 }

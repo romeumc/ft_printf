@@ -6,11 +6,23 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 00:21:27 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/05 23:55:02 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/07 23:02:09 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int				ft_atoi(const char *nptr)
+int	check_edge_case(long long number)
+{
+	if (number >= 9223372036854775807)
+		return (-1);
+	if (number <= -9223372036854775807 || number > 2147483647)
+		return (0);
+	if (number < -2147483648)
+		return (-1);
+	else
+		return (number);
+}
+
+int	ft_atoi(const char *nptr)
 {
 	int			i;
 	int			signal;
@@ -23,7 +35,8 @@ int				ft_atoi(const char *nptr)
 		i++;
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		signal = (nptr[i] == '-' ? -1 : 1);
+		if (nptr[i] == '-')
+			signal = -1;
 		i++;
 	}
 	while (nptr[i] >= '0' && nptr[i] <= '9')
@@ -32,9 +45,5 @@ int				ft_atoi(const char *nptr)
 		i++;
 	}
 	number = number * signal;
-	if (number >= 9223372036854775807)
-		return (-1);
-	if (number <= -9223372036854775807 || number > 2147483647)
-		return (0);
-	return (number < -2147483648 ? -1 : (int)number);
+	return ((int)check_edge_case(number));
 }

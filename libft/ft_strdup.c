@@ -6,13 +6,13 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 13:49:53 by rmartins          #+#    #+#             */
-/*   Updated: 2021/01/13 14:15:41 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/07 22:42:32 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
 	int		i;
 	char	*temp;
