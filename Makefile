@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/10 16:13:53 by rmartins         ###   ########.fr        #
+#    Updated: 2021/02/13 22:30:56 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = libftprintf.a
 HEADER = include/libftprintf.h
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
-OBJ_DIR = obj/
-OBJ = $(SRC:%.c=$(OBJ_DIR)%.o)
+OBJ_DIR = obj
+OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 SRC = ft_printf.c \
 		src/parse_fmt.c \
@@ -32,7 +32,7 @@ $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 	@echo $(ANSI_RESET) ""
 
-$(OBJ_DIR)%.o: %.c
+$(OBJ_DIR)/%.o: %.c
 	@echo $(ANSI_B_BGREEN) "compile ft_printf objects" $(ANSI_RESET)$(ANSI_F_BBLACK)
 	gcc $(CFLAGS) -include $(HEADER) -c $< -o $@
 	@echo $(ANSI_RESET)
@@ -40,8 +40,8 @@ $(OBJ_DIR)%.o: %.c
 $(OBJ): | $(OBJ_DIR)
 $(OBJ_DIR):
 	@echo $(ANSI_B_BGREEN) "create obj folder if needed" $(ANSI_RESET)$(ANSI_F_BBLACK)
-	mkdir $@
-	mkdir $@src
+	mkdir -p $@
+	mkdir -p $(OBJ_DIR)/src
 	@echo $(ANSI_RESET) ""
 
 clean:
