@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 20:34:04 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/07 22:40:49 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/12 10:59:18 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_putnbr_bonus(long nb, int fd)
 		ft_putchar_fd(nb + '0', fd);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void		ft_putnbr_fd(int n, int fd)
 {
 	ft_putnbr_bonus(n, fd);
 }

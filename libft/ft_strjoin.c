@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 22:49:20 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/08 23:32:58 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/12 10:56:17 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	*ft_strcat_bonus(char *dest, char *src)
 	return (dest);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*ptr;
 	size_t	len_s1;

@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 09:11:04 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/07 22:49:04 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/12 10:57:16 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	count_end(char const *s1, char const *set, size_t pos)
 	return (counter);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char		*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	start_counter;

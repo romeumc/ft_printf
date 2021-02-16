@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup_join_bonus.c                             :+:      :+:    :+:   */
+/*   ft_realloc_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 13:06:33 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/12 10:52:27 by rmartins         ###   ########.fr       */
+/*   Created: 2021/02/15 10:18:26 by rmartins          #+#    #+#             */
+/*   Updated: 2021/02/16 18:11:57 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup_join(char *s, char c)
+void	*ft_realloc(void *ptr, size_t size)
 {
-	int		i;
-	char	*temp;
+	void	*newptr;
 
-	i = 0;
-	temp = malloc(sizeof(char) * (ft_strlen(s) + 2));
-	if (temp == NULL)
-		return (NULL);
-	while (s[i] != '\0')
+	if (ptr == NULL)
 	{
-		temp[i] = s[i];
-		i++;
+		ptr = malloc(size);
+		if (ptr == NULL)
+			return (NULL);
 	}
-	temp[i++] = c;
-	temp[i] = '\0';
-	free(s);
-	return (temp);
+	if (size == 0 && ptr != NULL)
+		free(ptr);
+	else
+	{
+		newptr = malloc(size);
+		if (newptr == NULL)
+			return (NULL);
+		else
+		{
+			ft_memcpy(newptr, ptr, size);
+			free(ptr);
+			return (newptr);
+		}
+	}
+	return (ptr);
 }

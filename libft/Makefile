@@ -33,7 +33,8 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_strstr_bonus.c ft_isblank_bonus.c ft_isspace_bonus.c \
 		ft_isxdigit_bonus.c ft_isgraph_bonus.c ft_putendl_bonus.c \
 		ft_iscntrl_bonus.c ft_ispunct_bonus.c ft_islower_bonus.c \
-		ft_isupper_bonus.c ft_strdup_join_bonus.c ft_strequ_bonus.c
+		ft_isupper_bonus.c ft_strdup_join_bonus.c ft_strequ_bonus.c \
+		ft_itoa_base_bonus.c ft_realloc_bonus.c
 		# ft_swap_bonus.c ft_sqrt_bonus.c  \
 			 
 
