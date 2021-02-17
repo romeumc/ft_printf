@@ -6,20 +6,21 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/13 22:30:56 by rmartins         ###   ########.fr        #
+#    Updated: 2021/02/17 19:32:11 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-HEADER = include/libftprintf.h
+HEADER = include/ft_printf.h
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 OBJ_DIR = obj
+SRC_DIR = src
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 SRC = ft_printf.c \
-		src/parse_fmt.c \
-		src/make_conversion.c
+		parse_fmt.c \
+		make_conversion.c
 
 all: $(NAME)
 
@@ -32,7 +33,7 @@ $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 	@echo $(ANSI_RESET) ""
 
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo $(ANSI_B_BGREEN) "compile ft_printf objects" $(ANSI_RESET)$(ANSI_F_BBLACK)
 	gcc $(CFLAGS) -include $(HEADER) -c $< -o $@
 	@echo $(ANSI_RESET)
@@ -41,7 +42,7 @@ $(OBJ): | $(OBJ_DIR)
 $(OBJ_DIR):
 	@echo $(ANSI_B_BGREEN) "create obj folder if needed" $(ANSI_RESET)$(ANSI_F_BBLACK)
 	mkdir -p $@
-	mkdir -p $(OBJ_DIR)/src
+	#mkdir -p $(OBJ_DIR)/src
 	@echo $(ANSI_RESET) ""
 
 clean:
@@ -61,8 +62,12 @@ re: fclean all
 .PHONY: all clean fclean
 
 norm:
-	@echo $(ANSI_B_RED) "norminette" $(ANSI_RESET)
-	@norminette $(HEADER) $(SRC)
+	@echo $(ANSI_B_RED) "norminette v3" $(ANSI_RESET)
+	@norminette $(HEADER) $(addprefix src/,$(SRC))
+
+norm2:
+	@echo $(ANSI_B_RED) "norminette v2" $(ANSI_RESET)
+	@norminette2 $(HEADER) $(addprefix src/,$(SRC))
 
 libnorm:
 	@echo $(ANSI_B_RED) "libft norminette" $(ANSI_RESET)
@@ -72,10 +77,12 @@ libnorm:
 run: all
 	@echo $(ANSI_B_RED) "Running for debbuger without sanitize" $(ANSI_RESET)
 	@gcc $(CFLAGS) -g3 main.c $(NAME) && ./a.out
+	@echo $(ANSI_B_RED) "Valgrind RESULT" $(ANSI_RESET)
+	valgrind -q --leak-check=full --track-origins=yes --show-leak-kinds=all ./a.out
 
 runs: all
 	@echo $(ANSI_B_RED) "Running with sanitize" $(ANSI_RESET)
-	@gcc $(CFLAGS) -g3 -fsanitize=address main.c $(NAME) && ./a.out
+	@gcc $(CFLAGS) -g3 -fsanitize=address main.c $(NAME) && ./a.out && rm a.out
 
 # colors
 ANSI_RESET = "\033[0m"

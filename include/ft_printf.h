@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/10 16:10:12 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/17 15:25:59 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
 # include <stdio.h>
@@ -19,13 +19,14 @@
 # include "ft_ansi.h"
 # include <malloc.h>
 
-typedef struct s_format
+typedef struct	s_format
 {
 	char	*conversion;
-}	t_format;
+	int		field_width;
+}				t_format;
 
-int		ft_printf(const char *fmt, ...);
-void	parse_fmt(size_t *i, const char *fmt, t_format *format);
-void	make_conversion(t_format *format, char **output, va_list ap);
+int				ft_printf(const char *fmt, ...);
+void			parse_fmt(size_t *i, const char *fmt, t_format *format);
+int				make_conversion(t_format *format, char **output, va_list ap);
 
 #endif

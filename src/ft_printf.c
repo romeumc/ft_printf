@@ -6,34 +6,46 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 23:03:02 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/10 16:58:43 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/17 19:29:01 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// int width = 4;
-// 	int num = 223;
-// 	double simples = 111;
-// 	double composto = 123.10; 
-// 	double composto1 = 123.1238; 
-// 	char romeu[] = "romeu";
-
-// 	printf("decimal with * - %*d\n", width, num);
-// 	printf("string and xX with # - %s %-s %x %#x %X %#X\n", romeu, romeu, *romeu, *romeu, *romeu, *romeu);
-// 	printf("float - %'.2f\n", 1234567.89);
-// 	printf("float - %'2f\n", 1234567.89);
-// 	printf("char - %c\n", '7');
-// 	printf("simples g - %g %#g | %0g | %-g\n", simples, simples, simples, simples);
-// 	printf("composto g - %g %#g | %0g \n", composto, composto, composto);
-// 	printf("composto1 g - %g %#g\n", composto1, composto1);
-// 	printf("simples e - %e %#e\n", simples, simples);
-// 	printf("composto e - %e %#e\n", composto, composto);
-// 	printf("composto1 e - %e %#e\n", composto1, composto1);
-
-#include "include/libftprintf.h"
+#include "../include/ft_printf.h"
 
 void	init_list(t_format *format)
 {
 	format->conversion = "";
+	format->field_width = 0;
+}
+
+int	change_width(t_format *format, char **output)
+{
+	int		i;
+	char	*temp;
+
+	i = 0;
+	if ((int)ft_strlen(*output) < format->field_width && !ft_strequ(format->conversion, "percentage"))
+	{
+		temp = ft_strdup(*output);
+		//printf("\n ==>romeuoutput:[%s] malloc:%ld %p\n", *output, malloc_usable_size(*output), *output);
+		//printf("\n ==>temp:[%s] malloc:%ld %p len:%ld\n", temp, malloc_usable_size(temp), temp, ft_strlen(temp));
+		*output = ft_realloc(*output, format->field_width + 1);
+		//printf("\n ==>romeuoutput:[%s] malloc:%ld %p\n", *output, malloc_usable_size(*output), *output);
+		if (*output == NULL)
+			return (0);
+		while (i < format->field_width - (int)ft_strlen(temp))
+		{
+			//printf("* i:%d < %d | [%s]\n", i, format->field_width - (int)ft_strlen(temp), *output);
+			output[0][i] = ' ';
+			i++;
+		}
+		output[0][i] = '\0';
+		//printf("\n ==>AQUIromeuoutput:[%s] malloc:%ld %p\n", *output, malloc_usable_size(*output), *output);
+		*output = ft_strcat(*output, temp);
+		free(temp);
+		//printf(" ==>output:[%s] malloc:%ld %p", *output, malloc_usable_size(*output), *output);
+	}
+	return (1);
 }
 
 int	ft_printf(const char *fmt, ...)
@@ -47,8 +59,11 @@ int	ft_printf(const char *fmt, ...)
 		return (0);
 	init_list(&format);
 	output = ft_calloc(1, sizeof(char));
+	if (output == NULL)
+		return (0);
+	//printf(ANSI_F_YELLOW "malloc:%ld %p " ANSI_RESET, malloc_usable_size(output), output);
 	i = 0;
-	//printf(ANSI_F_YELLOW "full format: [%s]\n" ANSI_RESET, fmt);
+	//printf(ANSI_F_YELLOW "\nfull format: [%s]\n" ANSI_RESET, fmt);
 	va_start(ap, fmt);
 	while (fmt[i] != '\0')
 	{
@@ -63,20 +78,26 @@ int	ft_printf(const char *fmt, ...)
 				free(output);
 				return (0);
 			}
-			make_conversion(&format, &output, ap);
+			if (make_conversion(&format, &output, ap) == 0)
+			{
+				free(output);
+				return (0);	
+			};
 			
 		}
 		else
 		{
 			//printf("[%c] ", fmt[i]);
 			output = ft_strdup_join(output, fmt[i]);
+			//printf(ANSI_F_YELLOW "malloc:%ld %p (%s) " ANSI_RESET, malloc_usable_size(output), output, output);
 		}
 		i++;
 	}
 	va_end(ap);
+	change_width(&format, &output);
 	//printf("OUTPUT\n");
-	i = ft_strlen(output);
 	ft_putstr(output);
+	i = ft_strlen(output);
 	//printf(ANSI_F_BBLACK"\nmaloc:%ld | outputlen:%ld"ANSI_RESET, malloc_usable_size(output), ft_strlen(output));
 	free(output);
 	return ((int)i);
