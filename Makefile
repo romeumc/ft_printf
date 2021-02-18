@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/17 19:32:11 by rmartins         ###   ########.fr        #
+#    Updated: 2021/02/17 23:22:28 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,8 @@ libnorm:
 run: all
 	@echo $(ANSI_B_RED) "Running for debbuger without sanitize" $(ANSI_RESET)
 	@gcc $(CFLAGS) -g3 main.c $(NAME) && ./a.out
+
+runv: all runs run
 	@echo $(ANSI_B_RED) "Valgrind RESULT" $(ANSI_RESET)
 	valgrind -q --leak-check=full --track-origins=yes --show-leak-kinds=all ./a.out
 

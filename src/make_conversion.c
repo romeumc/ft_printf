@@ -6,83 +6,113 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/17 17:34:45 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/18 02:12:03 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int	check_arg_string(char *str)
+void	treat_width(t_format *format, size_t len)
 {
-	if (str == NULL)
-		return (0);
-	if (ft_strlen(str) > 0)
-		return (1);
-	else
-		return (0);
+	int i;
+
+	i = 0;
+	//printf("\t" ANSI_B_BBLUE "width:[%d]" ANSI_RESET "\t", format->field_width);
+	if (format->field_width > (int)len)
+	{
+		while (i < format->field_width - (int)len)
+		{
+			format->output_lenght++;
+			ft_putchar(' ');
+			i++;
+		}
+	}
 }
 
-int	conversion_string(char ***output, va_list ap)
+void	conversion_string(t_format *format, va_list ap)
 {
 	char	*str;
-
 	
 	str = va_arg(ap, char *);
-	//printf("ARG:%s \n", str);
-	if (check_arg_string(str) == 1)
+	if (format->precision == 0)
 	{
-		//printf(ANSI_F_BWHITE"maloc:%ld | outputlen:%ld | strlen:%ld\t\t\t"ANSI_RESET, malloc_usable_size(**output), ft_strlen(**output), ft_strlen(str));
-		**output = ft_realloc(**output, ft_strlen(**output) + ft_strlen(str) + 1);
-		if (output == NULL)
-			return (0);
+		format->output_lenght += ft_strlen(str);
+		if (format->flag_minus == 1)
+		{
+			ft_putstr(str);
+			treat_width(format, ft_strlen(str));
+			//treat_precision()
+		}
 		else
-			**output = ft_strcat(**output, str);
-		//printf(ANSI_F_BWHITE"maloc:%ld | outputlen:%ld | strlen:%ld ==> output:%s\n"ANSI_RESET, malloc_usable_size(**output), ft_strlen(**output), ft_strlen(str), **output);
-		return (1);
+		{
+			treat_width(format, ft_strlen(str));
+			ft_putstr(str);
+		}
 	}
 	else
-		return (0);
+	{
+		format->output_lenght += format->precision_size;
+		if (format->flag_minus == 1)
+		{
+			ft_putnstr(str, format->precision_size);
+			treat_width(format, format->precision_size);
+			//treat_precision()
+		}
+		else
+		{
+			treat_width(format, format->precision_size);
+			ft_putnstr(str, format->precision_size);
+		}
+	}
 }
 
-int	conversion_decimal(char ***output, va_list ap)
+void	conversion_decimal(t_format *format, va_list ap)
 {
 	int		d;
 	char	*str;
 
 	d = va_arg(ap, int);
 	str = ft_itoa(d);
-	//printf(ANSI_F_BWHITE"maloc:%ld | outputlen:%ld | strlen:%ld\t\t\t"ANSI_RESET, malloc_usable_size(**output), ft_strlen(**output), ft_strlen(str));
-	**output = ft_realloc(**output, ft_strlen(**output) + ft_strlen(str) + 1);
-	if (output == NULL)
-		return (-1);
-	else
-		**output = ft_strcat(**output, str);
-	//printf(ANSI_F_BWHITE"maloc:%ld | outputlen:%ld | strlen:%ld ==> output:%s\n"ANSI_RESET, malloc_usable_size(**output), ft_strlen(**output), ft_strlen(str), **output);
+	treat_width(format, ft_strlen(str));
+	format->output_lenght += ft_strlen(str);
+	ft_putstr(str);
 	free(str);
-	return (1);
+	//printf(ANSI_B_BGREEN "conversion:[%s]" ANSI_RESET "\n", format->conversion);
 }
 
-int	conversion_char(char ***output, va_list ap)
+void	conversion_char(t_format *format, va_list ap)
 {
 	char c;
 
 	c = (char)va_arg(ap, int);
-	**output = ft_strdup_join(**output, c);
-	return (1);
+	format->output_lenght++;
+	if (format->flag_minus == 1)
+	{
+		ft_putchar(c);
+		treat_width(format, 1);
+	}
+	else
+	{
+		treat_width(format, 1);
+		ft_putchar(c);
+	}
+	//printf(ANSI_B_BGREEN "conversion:[%s]" ANSI_RESET "\n", format->conversion);
 }
 
-int	make_conversion(t_format *format, char **output, va_list ap)
+
+
+
+void	make_conversion(t_format *format, va_list ap)
 {
 	if (ft_strequ(format->conversion, "percentage"))
-		*output = ft_strdup_join(*output, '%');
+	{
+		format->output_lenght++;
+		ft_putchar('%');
+	}
 	if (ft_strequ(format->conversion, "string"))
-		if (conversion_string(&output, ap) == 0)
-			return (0);
+		conversion_string(format, ap);
 	if (ft_strequ(format->conversion, "decimal"))
-		if (conversion_decimal(&output, ap) == 0)
-			return (0);
+		conversion_decimal(format, ap);
 	if (ft_strequ(format->conversion, "char"))
-		if (conversion_char(&output, ap) == 0)
-			return (0);
-	return (1);
+		conversion_char(format, ap);
 }
