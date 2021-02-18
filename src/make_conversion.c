@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/18 14:45:43 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/18 16:43:28 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,32 @@ void	conversion_char(t_format *format, va_list ap)
 	//printf(ANSI_B_BGREEN "conversion:[%s]" ANSI_RESET "\n", format->conversion);
 }
 
+void	conversion_pointer(t_format *format, va_list ap)
+{
+	unsigned long	address;
 
+	address = (unsigned long)va_arg(ap, void *);
+	if (address == 0)
+	{
+		format->output_lenght = 5;
+		ft_putstr("(nil)");
+	}
+	//address = (unsigned long)&p; 
+
+	// format->output_lenght++;
+	// if (format->flag_minus == 1)
+	// {
+	// 	ft_putchar(c);
+	// 	treat_width(format, 1);
+	// }
+	// else
+	// {
+	// 	treat_width(format, 1);
+	// 	ft_putchar(c);
+	// }
+	//printf(ANSI_B_BGREEN "conversion:[%s]" ANSI_RESET "\n", format->conversion);
+	printf("romeu:%ld ", address);
+}
 
 
 void	make_conversion(t_format *format, va_list ap)
@@ -118,4 +143,6 @@ void	make_conversion(t_format *format, va_list ap)
 		conversion_decimal(format, ap);
 	if (ft_strequ(format->conversion, "char"))
 		conversion_char(format, ap);
+	if (ft_strequ(format->conversion, "pointer"))
+		conversion_pointer(format, ap);
 }
