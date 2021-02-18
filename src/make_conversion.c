@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/18 02:12:03 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/18 14:45:43 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	treat_width(t_format *format, size_t len)
 void	conversion_string(t_format *format, va_list ap)
 {
 	char	*str;
+	int		len_output_diff;
 	
+	len_output_diff = 0;
 	str = va_arg(ap, char *);
 	if (format->precision == 0)
 	{
@@ -41,7 +43,6 @@ void	conversion_string(t_format *format, va_list ap)
 		{
 			ft_putstr(str);
 			treat_width(format, ft_strlen(str));
-			//treat_precision()
 		}
 		else
 		{
@@ -51,16 +52,18 @@ void	conversion_string(t_format *format, va_list ap)
 	}
 	else
 	{
-		format->output_lenght += format->precision_size;
+		if ((int)ft_strlen(str) < format->precision_size)
+			len_output_diff = (format->precision_size - (int)ft_strlen(str));
+		format->output_lenght += format->precision_size - len_output_diff;
+		//printf("strlen:%ld | precision:%d | len_diff:%d | output_len:%ld", ft_strlen(str), format->precision_size, len_output_diff, format->output_lenght);
 		if (format->flag_minus == 1)
 		{
 			ft_putnstr(str, format->precision_size);
-			treat_width(format, format->precision_size);
-			//treat_precision()
+			treat_width(format, (format->precision_size - len_output_diff));
 		}
 		else
 		{
-			treat_width(format, format->precision_size);
+			treat_width(format, (format->precision_size - len_output_diff));
 			ft_putnstr(str, format->precision_size);
 		}
 	}
