@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/07 22:00:16 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/18 02:03:13 by rmartins         ###   ########.fr        #
+#    Updated: 2021/02/19 11:39:42 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_isxdigit_bonus.c ft_isgraph_bonus.c ft_putendl_bonus.c \
 		ft_iscntrl_bonus.c ft_ispunct_bonus.c ft_islower_bonus.c \
 		ft_isupper_bonus.c ft_strdup_join_bonus.c ft_strequ_bonus.c \
-		ft_itoa_base_bonus.c ft_realloc_bonus.c ft_putnstr_bonus.c
+		ft_itoa_base_bonus.c ft_realloc_bonus.c ft_putnstr_bonus.c \
+		ft_long_base_bonus.c
 		# ft_swap_bonus.c ft_sqrt_bonus.c  \
 			 
 
