@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/18 01:37:45 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/19 17:59:24 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,24 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 # include "ft_ansi.h"
-# include <malloc.h>
+
+# ifdef __unix__
+#  include <malloc.h>
+# endif
+# ifdef __APPLE__
+#  include <stdlib.h>
+#  include <malloc/malloc.h>
+# endif
+
+
+
 
 # define FLAGS "-0# +"
 # define WIDTH "*1234567890"
 # define PRECISION ".*1234567890"
+# define HEX "0123456789abcdef"
+# define NULLSTR "0x0"
+# define PREFIXHEX "0x"
 
 typedef struct	s_format
 {
