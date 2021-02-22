@@ -6,13 +6,14 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/17 23:22:28 by rmartins         ###   ########.fr        #
+#    Updated: 2021/02/21 22:46:29 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 HEADER = include/ft_printf.h
 CFLAGS = -Wall -Wextra -Werror
+CFLAGSERROR = -Wall -Wextra
 AR = ar rcs
 OBJ_DIR = obj
 SRC_DIR = src
@@ -85,6 +86,11 @@ runv: all runs run
 runs: all
 	@echo $(ANSI_B_RED) "Running with sanitize" $(ANSI_RESET)
 	@gcc $(CFLAGS) -g3 -fsanitize=address main.c $(NAME) && ./a.out && rm a.out
+
+rune:
+	@echo $(ANSI_B_RED) "Running without flag ERROR" $(ANSI_RESET)
+	@gcc $(CFLAGSERROR) -g3 -fsanitize=address main.c $(NAME) && ./a.out && rm a.out
+
 
 # colors
 ANSI_RESET = "\033[0m"

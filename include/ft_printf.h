@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/19 17:59:24 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/22 02:27:18 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_format
 	int		flag_plus;
 	int		precision;
 	int		precision_size;
+	int		negative;
 }				t_format;
 
 int				ft_printf(const char *fmt, ...);
