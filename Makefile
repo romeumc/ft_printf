@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/21 22:46:29 by rmartins         ###   ########.fr        #
+#    Updated: 2021/02/22 13:05:46 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ runs: all
 	@echo $(ANSI_B_RED) "Running with sanitize" $(ANSI_RESET)
 	@gcc $(CFLAGS) -g3 -fsanitize=address main.c $(NAME) && ./a.out && rm a.out
 
-rune:
+rune: all
 	@echo $(ANSI_B_RED) "Running without flag ERROR" $(ANSI_RESET)
 	@gcc $(CFLAGSERROR) -g3 -fsanitize=address main.c $(NAME) && ./a.out && rm a.out
 
