@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/22 13:05:46 by rmartins         ###   ########.fr        #
+#    Updated: 2021/02/22 22:21:04 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,9 @@ libnorm:
 	@echo $(ANSI_B_RED) "libft norminette" $(ANSI_RESET)
 	$(MAKE) norm -C libft
 
+libnorm2:
+	@echo $(ANSI_B_RED) "libft norminette v2" $(ANSI_RESET)
+	$(MAKE) norm2 -C libft
 
 run: all
 	@echo $(ANSI_B_RED) "Running for debbuger without sanitize" $(ANSI_RESET)

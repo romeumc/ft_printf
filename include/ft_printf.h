@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/22 02:27:18 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/23 01:04:39 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,13 @@
 #  include <malloc/malloc.h>
 # endif
 
-
-
-
 # define FLAGS "-0# +"
 # define WIDTH "*1234567890"
 # define PRECISION ".*1234567890"
-# define HEX "0123456789abcdef"
 # define NULLSTR "0x0"
 # define PREFIXHEX "0x"
+# define HEX "0123456789abcdef"
+# define HEXCAP "0123456789ABCDEF"
 
 typedef struct	s_format
 {

@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/07 22:00:16 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/22 00:44:26 by rmartins         ###   ########.fr        #
+#    Updated: 2021/02/23 00:28:41 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_iscntrl_bonus.c ft_ispunct_bonus.c ft_islower_bonus.c \
 		ft_isupper_bonus.c ft_strdup_join_bonus.c ft_strequ_bonus.c \
 		ft_itoa_base_bonus.c ft_realloc_bonus.c ft_putnstr_bonus.c \
-		ft_long_base_bonus.c ft_get_size_inbase_bonus.c
+		ft_long_tobase_bonus.c ft_get_size_inbase_bonus.c \
+		ft_longtoa_bonus.c
 		# ft_swap_bonus.c ft_sqrt_bonus.c  \
 			 
 
@@ -61,5 +62,8 @@ re: fclean all
 
 norm:
 	@norminette $(HEADER) $(SRCS)
+
+norm2:
+	@norminette2 $(HEADER) $(SRCS)
 
 .PHONY:		all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:48:09 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/22 03:29:36 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/22 23:18:50 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ static char	*get_convertion(char fmt_char)
 		return ("percentage");
 	if (fmt_char == 'p')
 		return ("pointer");
+	if (fmt_char == 'u')
+		return ("unsigned_int");
+	if (fmt_char == 'x')
+		return ("hex");
+	if (fmt_char == 'X')
+		return ("hexCAP");
 	else
 		return (NULL);
 }

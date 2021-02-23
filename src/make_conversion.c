@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/22 21:10:46 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/23 01:08:09 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	print_string_with_precision(t_format *format, char *str)
 	//printf("strlen:%ld | precision:%d | len_diff:%d | output_len:%ld", ft_strlen(str), format->precision_size, len_output_diff, format->output_lenght);
 	if (format->flag_minus == 1)
 	{
+		//debub______________________________________________________________format(format);
 		if (ft_strequ(format->conversion, "decimal"))
 		{
 			if (format->negative == 1)
@@ -185,7 +186,6 @@ void	print_string(t_format *format, char *str)
 	}
 }
 
-
 void	conversion_string(t_format *format, va_list ap)
 {
 	char	*str;
@@ -206,7 +206,7 @@ void	conversion_string(t_format *format, va_list ap)
 
 void	conversion_decimal(t_format *format, va_list ap)
 {
-	long	d;
+	int		d;
 	char	*str;
 	char	*temp;
 
@@ -232,17 +232,46 @@ void	conversion_decimal(t_format *format, va_list ap)
 	free(str);
 }
 
-// char	*address_toa(long address, t_format *format)
-// {
-// 	format->output_lenght += ft_strlen(PREFIXHEX);
-// 	ft_putstr(PREFIXHEX);
-// 	format->output_lenght += get_size_inbase(address, HEX);
-// 	ft_long_base(address, HEX);
-// }
+void	conversion_unsigned_int(t_format *format, va_list ap)
+{
+	unsigned int	d;
+	char			*str;
+
+	d = (unsigned int)va_arg(ap, int);
+	str = ft_longtoa(d);
+
+	// printf( ANSI_B_CYAN "d:[%u]" ANSI_RESET " ", d);
+	// printf( ANSI_B_CYAN "str:[%s]" ANSI_RESET " ", str);
+	// printf( ANSI_B_CYAN "temp:[%s]" ANSI_RESET " ", temp);
+	format->conversion = "decimal";
+	print_string(format, str);
+	free(str);
+}
+
+void	conversion_hexadecimal(t_format *format, va_list ap, char *type)
+{
+	unsigned int	d;
+	char			*str;
+
+	d = (unsigned int)va_arg(ap, int);
+	if (ft_strequ(type, "lower"))
+		str = ft_long_tobase(d, HEX);
+	else
+		str = ft_long_tobase(d, HEXCAP);
+	
+	// printf( ANSI_B_CYAN "d:[%u]" ANSI_RESET " ", d);
+	// printf( ANSI_B_CYAN "str:[%s]" ANSI_RESET " ", str);
+
+	format->conversion = "decimal";
+	print_string(format, str);
+	free(str);
+}
+
 
 void	conversion_pointer(t_format *format, va_list ap)
 {
 	unsigned long	address;
+	char			*str;
 
 	address = (unsigned long)va_arg(ap, void *);
 	if (address == 0)
@@ -257,17 +286,21 @@ void	conversion_pointer(t_format *format, va_list ap)
 		{
 			format->output_lenght += ft_strlen(PREFIXHEX);
 			ft_putstr(PREFIXHEX);
-			format->output_lenght += get_size_inbase(address, HEX);
-			ft_long_base(address, HEX);
-			treat_width(format, get_size_inbase(address, HEX) + ft_strlen(PREFIXHEX));
+			format->output_lenght += ft_get_size_inbase(address, HEX);
+			str = ft_long_tobase(address, HEX);
+			ft_putstr(str);
+			treat_width(format, ft_get_size_inbase(address, HEX) + ft_strlen(PREFIXHEX));
+			free(str);
 		}
 		else
 		{
-			treat_width(format, get_size_inbase(address, HEX) + ft_strlen(PREFIXHEX));
+			treat_width(format, ft_get_size_inbase(address, HEX) + ft_strlen(PREFIXHEX));
 			format->output_lenght += ft_strlen(PREFIXHEX);
 			ft_putstr(PREFIXHEX);
-			format->output_lenght += get_size_inbase(address, HEX);
-			ft_long_base(address, HEX);
+			format->output_lenght += ft_get_size_inbase(address, HEX);
+			str = ft_long_tobase(address, HEX);
+			ft_putstr(str);
+			free(str);
 		}
 		
 		//printf(" size:%d\n", get_size_inbase(address, HEX));
@@ -340,4 +373,10 @@ void	make_conversion(t_format *format, va_list ap)
 		conversion_char(format, ap);
 	if (ft_strequ(format->conversion, "pointer"))
 		conversion_pointer(format, ap);
+	if (ft_strequ(format->conversion, "unsigned_int"))
+		conversion_unsigned_int(format, ap);
+	if (ft_strequ(format->conversion, "hex"))
+		conversion_hexadecimal(format, ap, "lower");
+	if (ft_strequ(format->conversion, "hexCAP"))
+		conversion_hexadecimal(format, ap, "upper");
 }
