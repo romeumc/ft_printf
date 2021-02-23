@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:55:17 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/23 13:13:32 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/23 19:47:27 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -451,11 +451,11 @@ void	make_test_p()
 	// size = ft_printf(TESTp12);
 	// printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 	
-	printf(ANSI_F_GREEN);
-	size = printf(TESTp13);
-	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.13\n", size);
-	size = ft_printf(TESTp13);
-	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	// printf(ANSI_F_GREEN);
+	// size = printf(TESTp13);
+	// printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.13\n", size);
+	// size = ft_printf(TESTp13);
+	// printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 	
 	// printf(ANSI_F_GREEN);
 	// size = printf(TESTp14);
@@ -1535,11 +1535,20 @@ void	make_test_x()
 int	main(void)
 {
 	//make_test_s();
-	make_test_p();
+	//make_test_p();
 	//make_test_d();
 	//make_test_u();
 	//make_test_x();
 	//make_test_mix();
+
+	char			*str;
+	//ft_putnbr(INT_MIN);
+	ft_putnbr(-20);
+	printf("\ndecimal: max:%ld, min:%ld\n", LONG_MAX, LONG_MIN);
+	printf("decimal: max:%lx, min:%lx\n", LONG_MAX, LONG_MIN);
+	str = ft_long_tobase(-1110, HEX);
+	printf("\nlong to base:%s\n", str);
+	free(str);
 
 	// size = ft_printf("testes%sdddds%s%d%esc" "romeu." "teste", "abc", "def", "hij", 12, "   ", 't');
 	// printf(ANSI_B_BMAGENTA "\tsize:%d\n" ANSI_RESET, size);

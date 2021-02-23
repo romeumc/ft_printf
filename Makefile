@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/23 14:19:04 by rmartins         ###   ########.fr        #
+#    Updated: 2021/02/23 19:40:58 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = ft_printf.c \
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) lib
 	@echo $(ANSI_B_BGREEN) "compile libft" $(ANSI_RESET)$(ANSI_F_BBLACK)
 	$(MAKE) all -C libft
 	cp libft/libft.a $(NAME)

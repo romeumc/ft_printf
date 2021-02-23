@@ -6,36 +6,39 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 11:12:23 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/23 14:18:25 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/23 20:03:16 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 /*
 ** Nesta função estão duas formas de tratar os ponteiros
 */
 
-static void	ft_print_radix(long int nbr, char *base, char *result, int *pos)
+static void	ft_print_radix(long int nb, char *base, char *result, int *pos)
 {
-	int	len_base;
+	unsigned int	len_base;
+	unsigned long	nbu;
 
 	len_base = ft_strlen(base);
-	if (nbr < 0)
+	if (nb < 0)
 	{
-		len_base *= -1;
-		//nbr *= -1;
-		result[*pos] = '-';
-		(*pos)++;
+		nbu = (unsigned long)(nb * -1);
+		// result[*pos] = '-';
+		// (*pos)++;
 	}
-	if (nbr >= len_base)
+	else
+		nbu = (unsigned long)nb;
+	if (nbu >= len_base)
 	{
-		ft_print_radix(nbr / len_base, base, result, pos);
-		ft_print_radix(nbr % len_base, base, result, pos);
+		ft_print_radix(nbu / len_base, base, result, pos);
+		ft_print_radix(nbu % len_base, base, result, pos);
 	}
 	else
 	{
-		result[pos[0]] = base[nbr];
+		result[pos[0]] = base[nbu];
 		pos[0]++;
 	}
 }
