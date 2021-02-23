@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/22 22:21:04 by rmartins         ###   ########.fr        #
+#    Updated: 2021/02/23 14:19:04 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,9 @@ fclean: clean
 re: fclean all
 	
 .PHONY: all clean fclean
+
+lib:
+	$(MAKE) -C libft
 
 norm:
 	@echo $(ANSI_B_RED) "norminette v3" $(ANSI_RESET)
