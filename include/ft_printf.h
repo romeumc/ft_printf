@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/24 00:33:49 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/24 13:39:02 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct	s_format
 	int		flag_plus;
 	int		precision;
 	int		precision_size;
+	int		negative_precision;
 	int		negative;	//quando o numero é negativo (para colocar o sinal -)
 }				t_format;
 

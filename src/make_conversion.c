@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/24 01:11:01 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:00:04 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void debub______________________________________________________________format (
 	printf( ANSI_B_BBLUE "precision:[%d]" ANSI_RESET " ", format->precision);
 	printf( ANSI_B_BBLUE "precision_size:[%d]" ANSI_RESET " ", format->precision_size);
 	printf( ANSI_B_BBLUE "minus:[%d]" ANSI_RESET " ", format->flag_minus);
+	printf( ANSI_B_BBLUE "negative_precision:[%d]" ANSI_RESET " ", format->negative_precision);
+	printf( ANSI_B_BBLUE "negative_width:[%d]" ANSI_RESET " ", format->negative_width);
 }
 
 void	treat_width(t_format *format, size_t len)
@@ -58,22 +60,16 @@ void	treat_precision_decimal(t_format *format, size_t len)
 
 	i = 0;
 	c = '0';
-	if (format->negative_width == 1 && format->flag_zero ==1 && format->precision_size < 0)
-		c = ' ';
+
 	// printf("\t" ANSI_B_RED "len:[%ld]" ANSI_RESET "\t", len);
 	// debub______________________________________________________________format(format);
 	
-	// if (format->flag_zero == 1 && format->flag_minus == 0)
-	// 	c = '0';
-	// if (format->field_width > format->precision_size)
-	// {
-		while (i < format->precision_size - (int)len)
-		{
-			format->output_lenght++;
-			ft_putchar(c);
-			i++;
-		}
-	//}
+	while (i < format->precision_size - (int)len)
+	{
+		format->output_lenght++;
+		ft_putchar(c);
+		i++;
+	}
 }
 
 void	treat_width_decimal(t_format *format, int len)
@@ -81,14 +77,10 @@ void	treat_width_decimal(t_format *format, int len)
 	char	c;
 
 	c = ' ';
-	// if (format->negative_width == 0 && format->flag_zero ==1 && format->precision_size < 0)
-	// 	c = '0';
 	// printf( ANSI_B_RED "len:[%d] " ANSI_RESET "\\t", len);
 	// debub______________________________________________________________format(format);
 	
 	
-	// if (format->flag_zero == 1 && format->flag_minus == 0)
-	// 	c = '0';
 	while (len > 0)
 	{
 		format->output_lenght++;
@@ -109,13 +101,22 @@ void	print_string_with_precision(t_format *format, char *str)
 		format->precision_size = (int)ft_strlen(str);
 	}
 
-	format->output_lenght += format->precision_size - len_output_diff;
-	//printf("strlen:%ld | precision:%d | len_diff:%d | output_len:%ld", ft_strlen(str), format->precision_size, len_output_diff, format->output_lenght);
-	if (format->flag_minus == 1)
+
+	if (format->negative_precision == 1)
 	{
-		//debub______________________________________________________________format(format);
+		format->precision_size = ft_strlen(str);
+		format->output_lenght += ft_strlen(str);
+	}
+	else
+		format->output_lenght += format->precision_size - len_output_diff;
+	
+	
+	//printf("strlen:%ld | precision:%d | len_diff:%d | output_len:%ld", ft_strlen(str), format->precision_size, len_output_diff, format->output_lenght);
+	if (format->flag_minus == 1 || format->negative_width == 1)
+	{
 		if (ft_strequ(format->conversion, "decimal"))
 		{
+			//debub______________________________________________________________format(format);
 			if (format->negative == 1)
 				ft_putchar('-');
 			treat_precision_decimal(format, (format->precision_size - len_output_diff));
@@ -142,7 +143,9 @@ void	print_string_with_precision(t_format *format, char *str)
 		}
 		else
 		{
+			
 			//debub______________________________________________________________format(format);
+			//printf("str:%s | len:%ld", str, ft_strlen(str));
 			treat_width(format, (format->precision_size - len_output_diff));
 			ft_putnstr(str, format->precision_size);
 		}
@@ -155,8 +158,9 @@ void	print_string(t_format *format, char *str)
 	{
 		//debub______________________________________________________________format(format);
 		format->output_lenght += ft_strlen(str);
-		if (format->flag_minus == 1)
+		if (format->flag_minus == 1 || format->negative_width == 1)
 		{
+			//debub______________________________________________________________format(format);
 			if (format->negative == 1)
 					ft_putchar('-');
 			ft_putstr(str);
@@ -180,13 +184,13 @@ void	print_string(t_format *format, char *str)
 			ft_putstr(str);
 		}
 	}
-	else if (ft_strequ(str, "0") && ft_strequ(format->conversion, "decimal") && format->precision_size == 0)
-	{
-		format->flag_minus = 1;
-		//debub______________________________________________________________format(format);
-		//printf( ANSI_B_BBLUE "str:[%s]" ANSI_RESET " ", str);
-		treat_width(format, ft_strlen(str) - format->flag_minus);
-	}
+	// else if (ft_strequ(str, "0") && ft_strequ(format->conversion, "decimal") && format->precision_size == 0)
+	// {
+	// 	format->flag_minus = 1;
+	// 	//debub______________________________________________________________format(format);
+	// 	//printf( ANSI_B_BBLUE "str:[%s]" ANSI_RESET " ", str);
+	// 	treat_width(format, ft_strlen(str) - format->flag_minus);
+	// }
 	else
 	{
 		//debub______________________________________________________________format(format);
@@ -202,12 +206,6 @@ void	conversion_string(t_format *format, va_list ap)
 	if (str == NULL)
 	{
 		str = "(null)";
-		if (format->flag_minus == 1)
-		{
-			format->precision = 0;
-			//format->flag_minus = 0;
-			//format->field_width = ft_strlen(str);
-		}
 	}
 	print_string(format, str);
 }
@@ -282,15 +280,15 @@ void	conversion_pointer(t_format *format, va_list ap)
 	char			*str;
 
 	address = (unsigned long)va_arg(ap, void *);
-	if (address == 0)
-	{
-		format->output_lenght += ft_strlen(NULLSTR);
-		treat_width(format, ft_strlen(NULLSTR));
-		ft_putstr(NULLSTR);
-	}
-	else
-	{
-		if (format->flag_minus == 1)
+	// if (address == 0)
+	// {
+	// 	format->output_lenght += ft_strlen(NULLSTR);
+	// 	treat_width(format, ft_strlen(NULLSTR));
+	// 	ft_putstr(NULLSTR);
+	// }
+	// else
+	// {
+		if (format->flag_minus == 1 || format->negative_width == 1)
 		{
 			format->output_lenght += ft_strlen(PREFIXHEX);
 			ft_putstr(PREFIXHEX);
@@ -312,7 +310,7 @@ void	conversion_pointer(t_format *format, va_list ap)
 		}
 		
 		//printf(" size:%d\n", get_size_inbase(address, HEX));
-	}
+	// }
 	// ft_long_base(0, HEX);
 	// printf(" test:%d\n", get_size_inbase(0, HEX));
 	
@@ -339,7 +337,7 @@ void	conversion_char(t_format *format, va_list ap)
 
 	c = (char)va_arg(ap, int);
 	format->output_lenght++;
-	if (format->flag_minus == 1)
+	if (format->flag_minus == 1 || format->negative_width == 1)
 	{
 		ft_putchar(c);
 		treat_width(format, 1);
@@ -357,7 +355,7 @@ void	conversion_percentage(t_format *format)
 	// format->output_lenght++;
 	// ft_putchar('%');
 	format->output_lenght++;
-	if (format->flag_minus == 1)
+	if (format->flag_minus == 1 || format->negative_width == 1)
 	{
 		ft_putchar('%');
 		treat_width(format, 1);
