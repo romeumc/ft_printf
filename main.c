@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:55:17 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/24 16:34:08 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:49:07 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -373,7 +373,21 @@
 #define TESTcinco70 "%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d
 #define TESTcinco71 "%-*.*i, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d
 #define TESTcinco72 "%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d
-#define TESTcinco201 "%0*.*i", 4, -1, 8
+
+
+
+#define TESTcinco199 "%*.*i", -7, -4, -12
+#define TESTcinco200 "%-*.*i", -7, -4, -12
+#define TESTcinco201 "%0*.*i", -7, -4, -12
+
+#define TESTcinco199a "%*.*i", -7, 0, -12
+#define TESTcinco200a "%-*.*i", -7, 0, -12
+#define TESTcinco201a "%0*.*i", -7, 0, -12
+
+#define TESTcinco199b "%*.*i", -7, 4, -12
+#define TESTcinco200b "%-*.*i", -7, 4, -12
+#define TESTcinco201b "%0*.*i", -7, 4, -12
+
 
 void	make_test_mazoise()
 {
@@ -465,10 +479,63 @@ void	make_test_mazoise()
 
 
 	printf(ANSI_F_GREEN);
+	size = printf(TESTcinco199);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, 199, 4, -4);
+	size = ft_printf(TESTcinco199);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+	printf(ANSI_F_GREEN);
+	size = printf(TESTcinco200);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, 200, 4, -4);
+	size = ft_printf(TESTcinco200);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+	printf(ANSI_F_GREEN);
 	size = printf(TESTcinco201);
-	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, 201, 4, -1);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, 201, 4, -4);
 	size = ft_printf(TESTcinco201);
 	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+
+	/* versao a = precision nula */
+	printf(ANSI_F_GREEN);
+	size = printf(TESTcinco199a);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, 199, 4, 0);
+	size = ft_printf(TESTcinco199a);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+	printf(ANSI_F_GREEN);
+	size = printf(TESTcinco200a);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, 200, 4, 0);
+	size = ft_printf(TESTcinco200a);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+	printf(ANSI_F_GREEN);
+	size = printf(TESTcinco201a);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, 201, 4, 0);
+	size = ft_printf(TESTcinco201a);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+	/* versao b = precision positiva */
+	printf(ANSI_F_GREEN);
+	size = printf(TESTcinco199b);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, 199, 4, 4);
+	size = ft_printf(TESTcinco199b);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+	printf(ANSI_F_GREEN);
+	size = printf(TESTcinco200b);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, 200, 4, 4);
+	size = ft_printf(TESTcinco200b);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+	printf(ANSI_F_GREEN);
+	size = printf(TESTcinco201b);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, 201, 4, 4);
+	size = ft_printf(TESTcinco201b);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+
 
 }
 
@@ -1650,12 +1717,12 @@ void	make_test_x()
 int	main(void)
 {
 	//make_test_s();
-	//make_test_p();
+	make_test_p();
 	//make_test_d();
 	//make_test_u();
 	//make_test_x();
 	//make_test_mix();
-	make_test_mazoise();
+	//make_test_mazoise();
 
 	//char			*str;
 	//ft_putnbr(INT_MIN);
