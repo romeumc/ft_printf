@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:55:17 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/23 19:47:27 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/24 00:02:58 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -361,6 +361,91 @@
 #define TESTmix31 " %% %% %% %% %c %%cc%%cc%%%c ", -1, 0
 #define TESTmix32 " %%* *%%. %%* *%%. .-%c -%%*cc*%%c*c%%%c %s%%%c", -1, 1, "Tripouille", 0
 #define TESTmix33 "xXx%x%XxXx%%xXx%x%X", 15, 15, 16, 16
+
+/* Testes do T5 */
+#define TESTcinco37 "%.*i, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d
+#define TESTcinco37a "%.*i", a, i
+#define TESTcinco70 "%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d
+#define TESTcinco71 "%-*.*i, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d
+#define TESTcinco72 "%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d
+#define TESTcinco201 "%0*.*i", 4, -1, 8
+
+void	make_test_mazoise()
+{
+	int		a = -4;
+	int		b = 0;
+	char	c = 'a';
+	int		d = 2147483647;
+	int		e = -2147483648;
+	// int		f = 42;
+	// int		g = 25;
+	// int		h = 4200;
+	int		i = 8;
+	int		j = -12;
+	int		k = 123456789;
+	int		l = 0;
+	int		m = -12345678;
+	// char	*n = "abcdefghijklmnop";
+	// char	*o = "-a";
+	// char	*p = "-12";
+	// char	*q = "0";
+	// char	*r = "%%";
+	// char	*s = "-2147483648";
+	// char	*t = "0x12345678";
+	// char	*u = "-0";
+	int	size;
+
+	while (a < 5) //T34-69
+	{
+		printf(ANSI_F_GREEN);
+		size = printf(TESTcinco37);
+		printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.37 precison:%d\n", size,a);
+		size = ft_printf(TESTcinco37);
+		printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+		a++;
+	}
+
+
+	int counter = 70;
+	a = -2;
+	while(a < 5) //T70-177
+	{
+		b = -2;
+		while (b < 5)
+		{
+			printf(ANSI_F_GREEN);
+			size = printf(TESTcinco70);
+			printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, counter++, a, b);
+			size = ft_printf(TESTcinco70);
+			printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+			printf(ANSI_F_GREEN);
+			size = printf(TESTcinco71);
+			printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, counter++, a, b);
+			size = ft_printf(TESTcinco71);
+			printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+			printf(ANSI_F_GREEN);
+			size = printf(TESTcinco72);
+			printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, counter++, a, b);
+			size = ft_printf(TESTcinco72);
+			printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+
+			b++;
+		}
+		a++;
+	}
+
+
+	printf(ANSI_F_GREEN);
+	size = printf(TESTcinco201);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, 201, 4, -1);
+	size = ft_printf(TESTcinco201);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+}
 
 
 void	make_test_p()
@@ -784,7 +869,7 @@ void	make_test_d()
 
 void	make_test_s()
 {
-	//int	size;
+	int	size;
 
 	// printf(ANSI_F_GREEN);
 	// size = printf(TESTsRomeu1);
@@ -849,11 +934,11 @@ void	make_test_s()
 	// size = ft_printf(TESTs21);
 	// printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 
-	// printf(ANSI_F_GREEN);
-	// size = printf(TESTs22);
-	// printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.\n", size);
-	// size = ft_printf(TESTs22);
-	// printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	printf(ANSI_F_GREEN);
+	size = printf(TESTs22);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.22\n", size);
+	size = ft_printf(TESTs22);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 
 	// printf(ANSI_F_GREEN);
 	// size = printf(TESTs23);
@@ -1534,21 +1619,22 @@ void	make_test_x()
 
 int	main(void)
 {
-	//make_test_s();
+	make_test_s();
 	//make_test_p();
 	//make_test_d();
 	//make_test_u();
 	//make_test_x();
 	//make_test_mix();
+	//make_test_mazoise();
 
-	char			*str;
-	//ft_putnbr(INT_MIN);
-	ft_putnbr(-20);
-	printf("\ndecimal: max:%ld, min:%ld\n", LONG_MAX, LONG_MIN);
-	printf("decimal: max:%lx, min:%lx\n", LONG_MAX, LONG_MIN);
-	str = ft_long_tobase(-1110, HEX);
-	printf("\nlong to base:%s\n", str);
-	free(str);
+	// char			*str;
+	// //ft_putnbr(INT_MIN);
+	// ft_putnbr(-20);
+	// printf("\ndecimal: max:%ld, min:%ld\n", LONG_MAX, LONG_MIN);
+	// printf("decimal: max:%lx, min:%lx\n", LONG_MAX, LONG_MIN);
+	// str = ft_long_tobase(-1110, HEX);
+	// printf("\nlong to base:%s\n", str);
+	// free(str);
 
 	// size = ft_printf("testes%sdddds%s%d%esc" "romeu." "teste", "abc", "def", "hij", 12, "   ", 't');
 	// printf(ANSI_B_BMAGENTA "\tsize:%d\n" ANSI_RESET, size);
@@ -1563,7 +1649,7 @@ int	main(void)
 	// size = ft_printf("[%*c]", 1, '0');
 	// printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 	
-	// printf(ANSI_F_GREEN "[%-10c]" ANSI_RESET "\n", '0');
+	// printf(ANS0I_F_GREEN "[%-10c]" ANSI_RESET "\n", '0');
 	// size = ft_printf("[%-10c]", '0');
 	// printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 

@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 23:03:02 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/22 02:28:59 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/24 00:34:38 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	init_list(t_format *format, int size)
 {
 	format->conversion = "";
 	format->field_width = 0;
+	format->negative_width = 0;
 	format->output_lenght = size;
 	format->flag_minus = 0;
 	format->flag_zero = 0;

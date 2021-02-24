@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:48:09 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/22 23:18:50 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/24 00:34:21 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static void	get_width(char fmt_char, t_format *format, va_list ap)
 	if (format->field_width < 0)
 	{
 		format->flag_minus = 1;
+		format->negative_width = 1;
 		format->field_width = -format->field_width;
 	}
 }
@@ -71,11 +72,12 @@ static void	get_precision(char fmt_char, t_format *format, va_list ap)
 			format->precision_size = va_arg(ap, int);
 		else
 			format->precision_size = format->precision_size * 10 + (fmt_char - '0');
-		if (format->precision_size < 0)
-		{
-			format->flag_minus = 1;
-			format->precision_size = -format->precision_size;
-		}
+		// if (format->precision_size < 0)
+		// {
+		// 	//format->flag_minus = 1;
+		// 	format->precision_size = 1;
+		// 	//format->precision_size = -format->precision_size;
+		// }
 	}
 	if (fmt_char == '.')
 		format->precision = 1;
