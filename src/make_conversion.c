@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/24 16:00:04 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:39:10 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void	treat_width(t_format *format, size_t len)
 	
 	if (format->flag_zero == 1 && format->flag_minus == 0)
 		c = '0';
-	
+
+	if (format->negative_width == 1)
+		c = ' ';
 	// if (ft_strequ(format->conversion, "decimal"))
 	// {
 	// 	c = '0';
@@ -61,9 +63,12 @@ void	treat_precision_decimal(t_format *format, size_t len)
 	i = 0;
 	c = '0';
 
-	// printf("\t" ANSI_B_RED "len:[%ld]" ANSI_RESET "\t", len);
-	// debub______________________________________________________________format(format);
-	
+	//printf("\t" ANSI_B_RED "len:[%ld]" ANSI_RESET "\t", len);
+	//debub______________________________________________________________format(format);
+	if (format->negative_precision == 1)
+		c = ' ';
+
+
 	while (i < format->precision_size - (int)len)
 	{
 		format->output_lenght++;
@@ -184,13 +189,13 @@ void	print_string(t_format *format, char *str)
 			ft_putstr(str);
 		}
 	}
-	// else if (ft_strequ(str, "0") && ft_strequ(format->conversion, "decimal") && format->precision_size == 0)
-	// {
-	// 	format->flag_minus = 1;
-	// 	//debub______________________________________________________________format(format);
-	// 	//printf( ANSI_B_BBLUE "str:[%s]" ANSI_RESET " ", str);
-	// 	treat_width(format, ft_strlen(str) - format->flag_minus);
-	// }
+	else if (ft_strequ(str, "0") && ft_strequ(format->conversion, "decimal") && format->precision_size == 0)
+	{
+		format->flag_minus = 1;
+		//debub______________________________________________________________format(format);
+		//printf( ANSI_B_BBLUE "str:[%s]" ANSI_RESET " ", str);
+		treat_width(format, ft_strlen(str) - format->flag_minus);
+	}
 	else
 	{
 		//debub______________________________________________________________format(format);

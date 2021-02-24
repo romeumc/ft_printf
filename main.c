@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:55:17 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/24 15:51:34 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:34:08 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -632,11 +632,11 @@ void	make_test_d()
 	size = ft_printf(TESTd1);
 	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 
-	// printf(ANSI_F_GREEN);
-	// size = printf(TESTd2);
-	// printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.\n", size);
-	// size = ft_printf(TESTd2);
-	// printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	printf(ANSI_F_GREEN);
+	size = printf(TESTd2);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.\n", size);
+	size = ft_printf(TESTd2);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 	
 	// printf(ANSI_F_GREEN);
 	// size = printf(TESTd3);
@@ -1649,13 +1649,13 @@ void	make_test_x()
 
 int	main(void)
 {
-	make_test_s();
+	//make_test_s();
 	//make_test_p();
 	//make_test_d();
 	//make_test_u();
 	//make_test_x();
 	//make_test_mix();
-	//make_test_mazoise();
+	make_test_mazoise();
 
 	//char			*str;
 	//ft_putnbr(INT_MIN);
