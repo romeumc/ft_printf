@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:55:17 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/24 18:49:07 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:58:28 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -622,11 +622,11 @@ void	make_test_p()
 	// size = ft_printf(TESTp11);
 	// printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 	
-	printf(ANSI_F_GREEN);
-	size = printf(TESTp12);
-	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.\n", size);
-	size = ft_printf(TESTp12);
-	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	// printf(ANSI_F_GREEN);
+	// size = printf(TESTp12);
+	// printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.\n", size);
+	// size = ft_printf(TESTp12);
+	// printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 	
 	// printf(ANSI_F_GREEN);
 	// size = printf(TESTp13);
@@ -1717,21 +1717,21 @@ void	make_test_x()
 int	main(void)
 {
 	//make_test_s();
-	make_test_p();
+	//make_test_p();
 	//make_test_d();
 	//make_test_u();
 	//make_test_x();
 	//make_test_mix();
 	//make_test_mazoise();
 
-	//char			*str;
-	//ft_putnbr(INT_MIN);
-	//ft_putnbr(-20);
-	// printf("\ndecimal: max:%ld, min:%ld\n", ULONG_MAX, -ULONG_MAX);
-	// printf("hex: max:%lx, min:%lx\n", ULONG_MAX, ULONG_MAX);
-	// str = ft_long_tobase(ULONG_MAX, HEX);
-	// printf("\nlong to base:%s\n", str);
-	// free(str);
+	char	*str;
+	str = ft_long_tobase(ULONG_MAX, HEX);
+	printf("\ndecimal:%ld | hex:%lx | mine:%s", ULONG_MAX, ULONG_MAX, str);
+
+	str = ft_long_tobase(2546222222222287, HEX);
+	printf("\ndecimal:%ld | hex:%lx | mine:%s", 2546222222222287, 2546222222222287, str);
+
+	free(str);
 
 	
 
