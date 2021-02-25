@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/24 18:43:41 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/25 10:25:37 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,9 +271,9 @@ void	conversion_hexadecimal(t_format *format, va_list ap, char *type)
 
 	d = (unsigned int)va_arg(ap, int);
 	if (ft_strequ(type, "lower"))
-		str = ft_long_tobase(d, HEX);
+		str = ft_ulong_tobase(d, HEX);
 	else
-		str = ft_long_tobase(d, HEXCAP);
+		str = ft_ulong_tobase(d, HEXCAP);
 	
 	// printf( ANSI_B_CYAN "d:[%u]" ANSI_RESET " ", d);
 	// printf( ANSI_B_CYAN "str:[%s]" ANSI_RESET " ", str);
@@ -302,19 +302,19 @@ void	conversion_pointer(t_format *format, va_list ap)
 		{
 			format->output_lenght += ft_strlen(PREFIXHEX);
 			ft_putstr(PREFIXHEX);
-			format->output_lenght += ft_get_size_inbase(address, HEX);
-			str = ft_long_tobase(address, HEX);
+			format->output_lenght += ft_getsize_ulonginbase(address, HEX);
+			str = ft_ulong_tobase(address, HEX);
 			ft_putstr(str);
-			treat_width(format, ft_get_size_inbase(address, HEX) + ft_strlen(PREFIXHEX));
+			treat_width(format, ft_getsize_ulonginbase(address, HEX) + ft_strlen(PREFIXHEX));
 			free(str);
 		}
 		else
 		{
-			treat_width(format, ft_get_size_inbase(address, HEX) + ft_strlen(PREFIXHEX));
+			treat_width(format, ft_getsize_ulonginbase(address, HEX) + ft_strlen(PREFIXHEX));
 			format->output_lenght += ft_strlen(PREFIXHEX);
 			ft_putstr(PREFIXHEX);
-			format->output_lenght += ft_get_size_inbase(address, HEX);
-			str = ft_long_tobase(address, HEX);
+			format->output_lenght += ft_getsize_ulonginbase(address, HEX);
+			str = ft_ulong_tobase(address, HEX);
 			ft_putstr(str);
 			free(str);
 		}

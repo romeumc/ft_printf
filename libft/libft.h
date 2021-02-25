@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 21:30:52 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/22 23:43:31 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/25 10:23:47 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ char			*ft_strdup_join(char *s, char c);
 int				ft_strequ(char *s1, char *s2);
 char			*ft_itoa_base(int number, int base);
 void			*ft_realloc(void *ptr, size_t size);
-char			*ft_long_tobase(long int nbr, char *base);
+char			*ft_long_tobase(unsigned long int nbr, char *base);
 void			ft_putnstr(char *s, size_t n);
-int				ft_get_size_inbase(long number, char *base);
+int				ft_getsize_ulonginbase(unsigned long number, char *base);
 char			*ft_longtoa(long n);
 #endif
