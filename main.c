@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:55:17 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/25 10:19:35 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/25 10:27:53 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1725,11 +1725,11 @@ int	main(void)
 	//make_test_mazoise();
 
 	char	*str;
-	str = ft_long_tobase(ULONG_MAX, HEX);
+	str = ft_ulong_tobase(ULONG_MAX, HEX);
 	printf("\ndecimal:%ld | hex:%lx | mine:%s", ULONG_MAX, ULONG_MAX, str);
 	free(str);
 
-	str = ft_long_tobase(2546222222222287, HEX);
+	str = ft_ulong_tobase(2546222222222287, HEX);
 	printf("\ndecimal:%ld | hex:%lx | mine:%s", 2546222222222287, 2546222222222287, str);
 	free(str);
 
