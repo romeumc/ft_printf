@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:48:09 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/25 19:03:58 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/25 20:05:25 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*get_convertion(char fmt_char)
 	if (fmt_char == 'x')
 		return ("hex");
 	if (fmt_char == 'X')
-		return ("hexCAP");
+		return ("heX");
 	else
 		return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:55:17 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/25 16:27:55 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/25 23:41:40 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -375,7 +375,6 @@
 #define TESTcinco72 "%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d
 
 
-
 #define TESTcinco199 "%*.*i", -7, -4, -12
 #define TESTcinco200 "%-*.*i", -7, -4, -12
 #define TESTcinco201 "%0*.*i", -7, -4, -12
@@ -389,6 +388,179 @@
 #define TESTcinco201b "%0*.*i", -7, 4, -12
 #define TESTsRomeu3 "%% *.5i 42 == |% *.5i|", 4, 42
 
+
+/* Testes SHARP */
+#define TESTsharpA "%#*.*x|%#*.*x|%#*.*x|%#*.*x", a, b, l, a, b, i, a, b, j, a, b, k
+#define TESTsharpB "%#-*.*x|%#-*.*x|%#-*.*x|%#-*.*x", a, b, l, a, b, i, a, b, j, a, b, k
+#define TESTsharpC "%#0*.*x|%#0*.*x|%#0*.*x|%#0*.*x", a, b, l, a, b, i, a, b, j, a, b, k
+
+#define TESTsharp1 " %#x ", 0
+#define TESTsharp2 " %#2x ", 0
+#define TESTsharp3 " %#02x ", 0
+#define TESTsharp4 " %#-03x ", 0
+#define TESTsharp5 " %#-03.x ", 0
+#define TESTsharp6 " %#-03.1x ", 0
+#define TESTsharp7 " %#-03.2x ", 0
+#define TESTsharp8 " %#-03.*x ", 2, 0
+#define TESTsharp9 " %#x ", 1
+#define TESTsharp10 " %#2x ", 1
+#define TESTsharp11 " %#02x ", 1
+#define TESTsharp12 " %#-03x ", 1
+#define TESTsharp13 " %#-03.x ", 1
+#define TESTsharp14 " %#-03.1x ", 1
+#define TESTsharp15 " %#-03.2x ", 1
+#define TESTsharp16 " %#-03.*x ", 2, 1
+
+void	make_test_sharp()
+{
+	int	size;
+
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp1);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.1\n", size);
+	size = ft_printf(TESTsharp1);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp2);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.2\n", size);
+	size = ft_printf(TESTsharp2);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp3);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.3\n", size);
+	size = ft_printf(TESTsharp3);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp4);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.4\n", size);
+	size = ft_printf(TESTsharp4);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp5);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.5\n", size);
+	size = ft_printf(TESTsharp5);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp6);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.6\n", size);
+	size = ft_printf(TESTsharp6);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp7);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.7\n", size);
+	size = ft_printf(TESTsharp7);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp8);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.8\n", size);
+	size = ft_printf(TESTsharp8);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp9);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.9\n", size);
+	size = ft_printf(TESTsharp9);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp10);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.10\n", size);
+	size = ft_printf(TESTsharp10);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp11);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.11\n", size);
+	size = ft_printf(TESTsharp11);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp12);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.12\n", size);
+	size = ft_printf(TESTsharp12);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp13);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.13\n", size);
+	size = ft_printf(TESTsharp13);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp14);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.14\n", size);
+	size = ft_printf(TESTsharp14);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp15);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.15\n", size);
+	size = ft_printf(TESTsharp15);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp16);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.16\n", size);
+	size = ft_printf(TESTsharp16);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+
+	// int		a;
+	// int		b;
+	// int		i = 8;
+	// int		j = -12;
+	// int		k = 12389;
+	// int		l = 0;
+	// // int		m = -12345678;
+	// // // char	*n = "abcdefghijklmnop";
+	// // // char	*o = "-a";
+	// // // char	*p = "-12";
+	// // // char	*q = "0";
+	// // // char	*r = "%%";
+	// // // char	*s = "-2147483648";
+	// // // char	*t = "0x12345678";
+	// // // char	*u = "-0";
+	// // int	size;
+	// int counter;
+	// counter = 1;
+	
+	// a = -8;
+	// while(a < 8)
+	// {
+	// 	b = -8;
+	// 	while (b < 8)
+	// 	{
+	// 		printf(ANSI_F_GREEN);
+	// 		size = printf(TESTsharpA);
+	// 		printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, counter++, a, b);
+	// 		size = ft_printf(TESTsharpA);
+	// 		printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+	// 		printf(ANSI_F_GREEN);
+	// 		size = printf(TESTsharpB);
+	// 		printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, counter++, a, b);
+	// 		size = ft_printf(TESTsharpB);
+	// 		printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+	// 		printf(ANSI_F_GREEN);
+	// 		size = printf(TESTsharpC);
+	// 		printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, counter++, a, b);
+	// 		size = ft_printf(TESTsharpC);
+	// 		printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	// 		b++;
+	// 	}
+	// 	a++;
+	// }
+
+
+}
 
 void	make_test_mazoise()
 {
@@ -539,7 +711,6 @@ void	make_test_mazoise()
 
 
 }
-
 
 void	make_test_p()
 {
@@ -1724,31 +1895,32 @@ int	main(void)
 	//make_test_x();
 	//make_test_mix();
 	//make_test_mazoise();
+	make_test_sharp();
 
-	char	*str;
-	str = ft_ulong_tobase(ULONG_MAX, HEX);
-	printf("\ndecimal:%ld | hex:%lx | mine:%s", ULONG_MAX, ULONG_MAX, str);
-	free(str);
+	// char	*str;
+	// str = ft_ulong_tobase(ULONG_MAX, HEX);
+	// printf("\ndecimal:%ld | hex:%lx | mine:%s", ULONG_MAX, ULONG_MAX, str);
+	// free(str);
 
-	str = ft_ulong_tobase(2546222222222287, HEX);
-	printf("\ndecimal:%ld | hex:%lx | mine:%s", 2546222222222287, 2546222222222287, str);
-	free(str);
+	// str = ft_ulong_tobase(2546222222222287, HEX);
+	// printf("\ndecimal:%ld | hex:%lx | mine:%s", 2546222222222287, 2546222222222287, str);
+	// free(str);
 
 
-	printf("\n");
-	int size;
-	printf(ANSI_F_GREEN);
-	size = printf(TESTsRomeu3);
-	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " TestsRomeu3\n", size);
-	size = ft_printf(TESTsRomeu3);
-	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	// printf("\n");
+	// int size;
+	// printf(ANSI_F_GREEN);
+	// size = printf(TESTsRomeu3);
+	// printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " TestsRomeu3\n", size);
+	// size = ft_printf(TESTsRomeu3);
+	// printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 
-	printf("\n");
-	printf(ANSI_F_GREEN);
-	size = printf("TESTsRomeu3 - %c %c", 'v', 'r');
-	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " TestsRomeu3\n", size);
-	size = ft_printf("TESTsRomeu3 - %c %c", 'v', 'r');
-	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	// printf("\n");
+	// printf(ANSI_F_GREEN);
+	// size = printf("TESTsRomeu3 - %c %c", 'v', 'r');
+	// printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " TestsRomeu3\n", size);
+	// size = ft_printf("TESTsRomeu3 - %c %c", 'v', 'r');
+	// printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 
 	// size = ft_printf("testes%sdddds%s%d%esc" "romeu." "teste", "abc", "def", "hij", 12, "   ", 't');
 	// printf(ANSI_B_BMAGENTA "\tsize:%d\n" ANSI_RESET, size);

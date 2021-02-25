@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/25 19:22:18 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/25 20:05:46 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,6 @@ void	make_conversion(t_format *format, va_list ap)
 		conversion_unsigned_int(format, ap);
 	if (ft_strequ(format->conversion, "hex"))
 		conversion_hex(format, ap, "lower");
-	if (ft_strequ(format->conversion, "hexCAP"))
+	if (ft_strequ(format->conversion, "heX"))
 		conversion_hex(format, ap, "upper");
 }

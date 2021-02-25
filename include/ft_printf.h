@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/25 19:22:22 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/25 23:33:25 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ void			treat_width(t_format *format, size_t len);
 void			treat_precision_decimal(t_format *format, size_t len);
 void			treat_width_decimal(t_format *format, int len);
 void			print_minus_ifnegative(t_format *format);
+void			print_hex_cardinal(t_format *format, char *str);
 
 #endif

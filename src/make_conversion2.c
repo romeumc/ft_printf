@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 17:19:36 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/25 19:25:32 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/25 22:07:37 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,14 @@ void	conversion_hex(t_format *format, va_list ap, char *type)
 	d = (unsigned int)va_arg(ap, int);
 	if (ft_strequ(type, "lower"))
 	{
+		if (format->flag_cardinal == 1)
+			format->flag_cardinal = 10;
 		str = ft_ulong_tobase(d, HEX);
 	}
 	else
 	{
+		if (format->flag_cardinal == 1)
+			format->flag_cardinal = 20; 
 		str = ft_ulong_tobase(d, HEXCAP);
 	}
 	format->conversion = "decimal";
