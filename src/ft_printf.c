@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 23:03:02 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/24 13:45:18 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/25 19:03:58 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_list(t_format *format, int size)
 {
 	format->conversion = "";
-	format->field_width = 0;
+	format->width = 0;
 	format->negative_width = 0;
 	format->output_lenght = size;
 	format->flag_minus = 0;
@@ -25,8 +25,8 @@ void	init_list(t_format *format, int size)
 	format->flag_plus = 0;
 	format->precision = 0;
 	format->precision_size = 0;
-	format->negative_precision = 0;
-	format->negative = 0;
+	format->neg_precision = 0;
+	format->negative_nb = 0;
 }
 
 int		ft_printf(const char *fmt, ...)
@@ -39,7 +39,6 @@ int		ft_printf(const char *fmt, ...)
 		return (0);
 	init_list(&format, 0);
 	i = 0;
-	//printf(ANSI_F_YELLOW "full format: [%s]" ANSI_RESET "\n", fmt);
 	va_start(ap, fmt);
 	while (fmt[i] != '\0')
 	{
@@ -49,10 +48,7 @@ int		ft_printf(const char *fmt, ...)
 			make_conversion(&format, ap);
 		}
 		else
-		{
-			format.output_lenght++;
-			ft_putchar(fmt[i]);
-		}
+			output_putchar(&format, fmt[i]);
 		init_list(&format, format.output_lenght);
 		i++;
 	}

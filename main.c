@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:55:17 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/25 10:27:53 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/25 16:27:55 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -387,6 +387,7 @@
 #define TESTcinco199b "%*.*i", -7, 4, -12
 #define TESTcinco200b "%-*.*i", -7, 4, -12
 #define TESTcinco201b "%0*.*i", -7, 4, -12
+#define TESTsRomeu3 "%% *.5i 42 == |% *.5i|", 4, 42
 
 
 void	make_test_mazoise()
@@ -1733,7 +1734,21 @@ int	main(void)
 	printf("\ndecimal:%ld | hex:%lx | mine:%s", 2546222222222287, 2546222222222287, str);
 	free(str);
 
-	
+
+	printf("\n");
+	int size;
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsRomeu3);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " TestsRomeu3\n", size);
+	size = ft_printf(TESTsRomeu3);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
+	printf("\n");
+	printf(ANSI_F_GREEN);
+	size = printf("TESTsRomeu3 - %c %c", 'v', 'r');
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " TestsRomeu3\n", size);
+	size = ft_printf("TESTsRomeu3 - %c %c", 'v', 'r');
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 
 	// size = ft_printf("testes%sdddds%s%d%esc" "romeu." "teste", "abc", "def", "hij", 12, "   ", 't');
 	// printf(ANSI_B_BMAGENTA "\tsize:%d\n" ANSI_RESET, size);

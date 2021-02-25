@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:48:09 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/24 15:31:34 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/25 19:03:58 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static char	*get_convertion(char fmt_char)
 
 static void	get_flags(char fmt_char, t_format *format)
 {
-	//printf(ANSI_F_CYAN " flag_minus: %d " ANSI_RESET "\n", format->flag_minus);
 	if (fmt_char == '-')
 		format->flag_minus = 1;
 	if (fmt_char == '0')
@@ -47,20 +46,18 @@ static void	get_flags(char fmt_char, t_format *format)
 		format->flag_space = 1;
 	if (fmt_char == '+')
 		format->flag_plus = 1;
-	//printf(ANSI_F_CYAN " flag_minus: %d " ANSI_RESET "\n", format->flag_minus);
 }
 
 static void	get_width(char fmt_char, t_format *format, va_list ap)
 {
 	if (fmt_char == '*')
-		format->field_width = va_arg(ap, int);
+		format->width = va_arg(ap, int);
 	else
-		format->field_width = format->field_width * 10 + (fmt_char - '0');
-	if (format->field_width < 0)
+		format->width = format->width * 10 + (fmt_char - '0');
+	if (format->width < 0)
 	{
-		//format->flag_minus = 1;
 		format->negative_width = 1;
-		format->field_width = -format->field_width;
+		format->width = -format->width;
 	}
 }
 
@@ -71,13 +68,11 @@ static void	get_precision(char fmt_char, t_format *format, va_list ap)
 		if (fmt_char == '*')
 			format->precision_size = va_arg(ap, int);
 		else
-			format->precision_size = format->precision_size * 10 + (fmt_char - '0');
+			format->precision_size =
+				format->precision_size * 10 + (fmt_char - '0');
 		if (format->precision_size < 0)
 		{
-		// 	//format->flag_minus = 1;
-		// 	format->precision_size = 1;
-			format->negative_precision = 1;
-			//format->precision_size = 0;
+			format->neg_precision = 1;
 		}
 	}
 	if (fmt_char == '.')
