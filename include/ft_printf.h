@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/25 23:33:25 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/26 14:41:08 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void			parse_fmt(size_t *i, const char *fmt,
 void			make_conversion(t_format *format, va_list ap);
 void			output_putchar(t_format *format, char c);
 void			output_putstr(t_format *format, char *str);
+void			output_putnstr(t_format *format, char *str, int output_len);
 void			print_string(t_format *format, char *str);
 void			conversion_string(t_format *format, va_list ap);
 void			conversion_int(t_format *format, va_list ap);

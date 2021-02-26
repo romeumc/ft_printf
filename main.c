@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:55:17 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/26 00:40:57 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/26 12:33:57 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -410,7 +410,7 @@
 #define TESTsharp14 " %#-03.1x ", 1
 #define TESTsharp15 " %#-03.2x ", 1
 #define TESTsharp16 " %#-03.*x ", 2, 1
-
+#define TESTsharp17 " %#05x ", 42
 
 /* Testes SPACE */
 #define TESTspace1 " % d ", 0
@@ -583,7 +583,7 @@ void	make_test_space()
 
 void	make_test_sharp()
 {
-	// int	size;
+	int	size;
 
 	// printf(ANSI_F_GREEN);
 	// size = printf(TESTsharp1);
@@ -681,6 +681,12 @@ void	make_test_sharp()
 	// size = ft_printf(TESTsharp16);
 	// printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 
+	printf(ANSI_F_GREEN);
+	size = printf(TESTsharp17);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test.16\n", size);
+	size = ft_printf(TESTsharp17);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+
 
 	// int		a;
 	// int		b;
@@ -734,29 +740,29 @@ void	make_test_sharp()
 
 void	make_test_mazoise()
 {
-	// int		a = -4;
-	// int		b = 0;
-	// char	c = 'a';
-	// int		d = 2147483647;
-	// int		e = -2147483648;
-	// // int		f = 42;
-	// // int		g = 25;
-	// // int		h = 4200;
-	// int		i = 8;
-	// int		j = -12;
-	// int		k = 123456789;
-	// int		l = 0;
-	// int		m = -12345678;
-	// // char	*n = "abcdefghijklmnop";
-	// // char	*o = "-a";
-	// // char	*p = "-12";
-	// // char	*q = "0";
-	// // char	*r = "%%";
-	// // char	*s = "-2147483648";
-	// // char	*t = "0x12345678";
-	// // char	*u = "-0";
-	// int	size;
-	// int counter;
+	int	size;
+	int		a = -4;
+	int		b = 0;
+	char	c = 'a';
+	int		d = 2147483647;
+	int		e = -2147483648;
+	// int		f = 42;
+	// int		g = 25;
+	// int		h = 4200;
+	int		i = 8;
+	int		j = -12;
+	int		k = 123456789;
+	int		l = 0;
+	int		m = -12345678;
+	// char	*n = "abcdefghijklmnop";
+	// char	*o = "-a";
+	// char	*p = "-12";
+	// char	*q = "0";
+	// char	*r = "%%";
+	// char	*s = "-2147483648";
+	// char	*t = "0x12345678";
+	// char	*u = "-0";
+	int counter;
 
 	// counter = 34;
 	// while (a < 5) //T34-69
@@ -789,36 +795,36 @@ void	make_test_mazoise()
 	// }
 
 
-	// counter = 70;
-	// a = -2;
-	// while(a < 5) //T70-177
-	// {
-	// 	b = -2;
-	// 	while (b < 5)
-	// 	{
-	// 		printf(ANSI_F_GREEN);
-	// 		size = printf(TESTcinco70);
-	// 		printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, counter++, a, b);
-	// 		size = ft_printf(TESTcinco70);
-	// 		printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	counter = 70;
+	a = -2;
+	while(a < 5) //T70-177
+	{
+		b = -2;
+		while (b < 5)
+		{
+			printf(ANSI_F_GREEN);
+			size = printf(TESTcinco70);
+			printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, counter++, a, b);
+			size = ft_printf(TESTcinco70);
+			printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 
-	// 		printf(ANSI_F_GREEN);
-	// 		size = printf(TESTcinco71);
-	// 		printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, counter++, a, b);
-	// 		size = ft_printf(TESTcinco71);
-	// 		printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+			printf(ANSI_F_GREEN);
+			size = printf(TESTcinco71);
+			printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, counter++, a, b);
+			size = ft_printf(TESTcinco71);
+			printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 
-	// 		printf(ANSI_F_GREEN);
-	// 		size = printf(TESTcinco72);
-	// 		printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, counter++, a, b);
-	// 		size = ft_printf(TESTcinco72);
-	// 		printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+			printf(ANSI_F_GREEN);
+			size = printf(TESTcinco72);
+			printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, counter++, a, b);
+			size = ft_printf(TESTcinco72);
+			printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 
 
-	// 		b++;
-	// 	}
-	// 	a++;
-	// }
+			b++;
+		}
+		a++;
+	}
 
 
 	// printf(ANSI_F_GREEN);
@@ -833,11 +839,11 @@ void	make_test_mazoise()
 	// size = ft_printf(TESTcinco200);
 	// printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 
-	// printf(ANSI_F_GREEN);
-	// size = printf(TESTcinco201);
-	// printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, 201, 4, -4);
-	// size = ft_printf(TESTcinco201);
-	// printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
+	printf(ANSI_F_GREEN);
+	size = printf(TESTcinco201);
+	printf(ANSI_RESET ANSI_B_BGREEN "size:%d" ANSI_RESET " Test[%d] a:%d | b:%d\n", size, 201, 4, -4);
+	size = ft_printf(TESTcinco201);
+	printf(ANSI_B_BMAGENTA "size:%d" ANSI_RESET "\n", size);
 
 
 	// /* versao a = precision nula */
@@ -2065,8 +2071,8 @@ int	main(void)
 	//make_test_x();
 	//make_test_mix();
 	//make_test_mazoise();
-	//make_test_sharp();
-	make_test_space();
+	make_test_sharp();
+	//make_test_space();
 
 	// char	*str;
 	// str = ft_ulong_tobase(ULONG_MAX, HEX);

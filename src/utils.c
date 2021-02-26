@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 16:51:35 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/25 23:36:28 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/26 14:40:45 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void	output_putstr(t_format *format, char *str)
 {
 	format->output_lenght += ft_strlen(str);
 	ft_putstr(str);
+}
+
+void	output_putnstr(t_format *format, char *str, int output_len)
+{
+	format->output_lenght += output_len;
+	ft_putnstr(str, format->precision_size);
 }
 
 void	print_minus_ifnegative(t_format *format)
