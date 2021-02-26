@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 17:19:36 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/25 22:07:37 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/26 00:55:43 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ void	conversion_int(t_format *format, va_list ap)
 	}
 	else
 	{
-		str = ft_strdup(temp);
+		if (format->flag_space == 1)
+			str = ft_strjoin(" ", temp);
+		else
+			str = ft_strdup(temp);
 	}
 	free(temp);
 	print_string(format, str);

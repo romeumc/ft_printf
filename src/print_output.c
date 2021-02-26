@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 17:02:34 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/25 23:53:58 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/26 00:31:15 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	print_string_precision_without_minus(t_format *f, char *str,
 	{
 		if (f->flag_cardinal != 0 && ft_strequ(str,"0") == 0)
 			f->precision_size += 2;
-
 		treat_width_decimal(f, (f->width - f->precision_size - f->negative_nb));
 		if (f->negative_nb == 1 && f->neg_precision == 1 && f->flag_zero == 1)
 			output_putchar(f, '-');
