@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/26 14:41:08 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/26 17:36:58 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct	s_format
 	int		precision_size;
 	int		neg_precision;
 	int		negative_nb;
+	char	*output;
 }				t_format;
 
 int				ft_printf(const char *fmt, ...);
@@ -66,7 +67,8 @@ void			conversion_hex(t_format *format, va_list ap, char *type);
 void			treat_width(t_format *format, size_t len);
 void			treat_precision_decimal(t_format *format, size_t len);
 void			treat_width_decimal(t_format *format, int len);
-void			print_minus_ifnegative(t_format *format);
 void			print_hex_cardinal(t_format *format, char *str);
+void			treat_flags(t_format *format, char *str);
+void			precheck_flags(t_format *format, char *str);
 
 #endif
