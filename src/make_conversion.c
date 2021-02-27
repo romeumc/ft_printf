@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/26 12:21:52 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/27 20:26:24 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	conversion_pointer(t_format *format, va_list ap)
 
 	address = (unsigned long)va_arg(ap, void *);
 	str = ft_ulong_tobase(address, HEX);
-	if (format->flag_minus == 1 || format->negative_width == 1)
+	if (format->flag_minus == 1 || format->neg_width == 1)
 	{
 		output_putstr(format, PREFIXHEX);
 		output_putstr(format, str);
@@ -40,7 +40,7 @@ void	conversion_char(t_format *format, va_list ap)
 	char c;
 
 	c = (char)va_arg(ap, int);
-	if (format->flag_minus == 1 || format->negative_width == 1)
+	if (format->flag_minus == 1 || format->neg_width == 1)
 	{
 		output_putchar(format, c);
 		treat_width(format, 1);
@@ -54,7 +54,7 @@ void	conversion_char(t_format *format, va_list ap)
 
 void	conversion_percentage(t_format *format)
 {
-	if (format->flag_minus == 1 || format->negative_width == 1)
+	if (format->flag_minus == 1 || format->neg_width == 1)
 	{
 		output_putchar(format, '%');
 		treat_width(format, 1);
@@ -64,6 +64,14 @@ void	conversion_percentage(t_format *format)
 		treat_width(format, 1);
 		output_putchar(format, '%');
 	}
+}
+
+void	conversion_n_chars(t_format *format, va_list ap)
+{
+	int *ptr;
+	
+	ptr = va_arg(ap, void *);
+	*ptr = format->output_lenght;
 }
 
 void	make_conversion(t_format *format, va_list ap)
@@ -84,4 +92,6 @@ void	make_conversion(t_format *format, va_list ap)
 		conversion_hex(format, ap, "lower");
 	if (ft_strequ(format->conversion, "heX"))
 		conversion_hex(format, ap, "upper");
+	if (ft_strequ(format->conversion, "n_chars"))
+		conversion_n_chars(format, ap);
 }

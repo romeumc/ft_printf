@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/26 17:36:58 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/27 20:26:14 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ typedef struct	s_format
 {
 	char	*conversion;
 	int		width;
-	int		negative_width;
-	size_t	output_lenght;
+	int		neg_width;
 	int		flag_minus;
 	int		flag_zero;
 	int		flag_cardinal;
@@ -49,6 +48,9 @@ typedef struct	s_format
 	int		precision_size;
 	int		neg_precision;
 	int		negative_nb;
+	int		modifier_l;
+	int		modifier_h;
+	size_t	output_lenght;
 	char	*output;
 }				t_format;
 

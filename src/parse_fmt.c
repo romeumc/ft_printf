@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:48:09 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/26 18:30:11 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/27 20:26:24 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static char	*get_convertion(char fmt_char)
 		return ("hex");
 	if (fmt_char == 'X')
 		return ("heX");
+	if (fmt_char == 'n')
+		return ("n_chars");
 	else
 		return (NULL);
 }
@@ -59,7 +61,7 @@ static void	get_width(char fmt_char, t_format *format, va_list ap)
 		format->width = format->width * 10 + (fmt_char - '0');
 	if (format->width < 0)
 	{
-		format->negative_width = 1;
+		format->neg_width = 1;
 		format->width = -format->width;
 	}
 }

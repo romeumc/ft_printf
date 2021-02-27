@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 17:02:34 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/27 18:50:14 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/27 20:26:24 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	debub______________________________________________________________format(t
 	printf(ANSI_B_BBLUE "precision_size:[%d]" ANSI_RESET " ", format->precision_size);
 	printf(ANSI_B_BBLUE "minus:[%d]" ANSI_RESET " ", format->flag_minus);
 	printf(ANSI_B_BBLUE "neg_precision:[%d]" ANSI_RESET " ", format->neg_precision);
-	printf(ANSI_B_BBLUE "negative_width:[%d]" ANSI_RESET " ", format->negative_width);
+	printf(ANSI_B_BBLUE "neg_width:[%d]" ANSI_RESET " ", format->neg_width);
 	printf(ANSI_B_BBLUE "negative_nb:[%d]" ANSI_RESET " ", format->negative_nb);
 	printf(ANSI_B_BBLUE "sharp:[%d]" ANSI_RESET " ", format->flag_cardinal);
 	printf(ANSI_B_BBLUE "space:[%d]" ANSI_RESET " ", format->flag_space);
@@ -86,7 +86,7 @@ void	print_string_with_precision(t_format *format, char *str)
 	{
 		output_len = format->precision_size - len_diff;
 	}
-	if (format->flag_minus == 1 || format->negative_width == 1)
+	if (format->flag_minus == 1 || format->neg_width == 1)
 		print_string_precision_minus(format, str, len_diff, output_len);
 	else
 		print_string_precision_no_minus(format, str, len_diff, output_len);
@@ -116,7 +116,7 @@ void	print_string(t_format *format, char *str)
 {
 	if (format->precision == 0)
 	{
-		if (format->flag_minus == 1 || format->negative_width == 1)
+		if (format->flag_minus == 1 || format->neg_width == 1)
 		{
 			//debub______________________________________________________________format(format);
 			precheck_flags(format, str);
@@ -132,11 +132,22 @@ void	print_string(t_format *format, char *str)
 	else if (ft_strequ(str, "0") && ft_strequ(format->conversion, "decimal")
 		&& format->precision_size == 0)
 	{
-		//debub______________________________________________________________format(format);
-		precheck_flags(format, str);
-		treat_flags(format, str);
-		format->flag_minus = 1;
-		treat_width(format, ft_strlen(str) - format->flag_minus);
+		if (format->flag_minus == 1)
+		{
+			//debub______________________________________________________________format(format);
+			precheck_flags(format, str);
+			treat_flags(format, str);
+			format->flag_minus = 1;
+			treat_width(format, ft_strlen(str) - format->flag_minus);
+		}
+		else
+		{
+			//debub______________________________________________________________format(format);
+			precheck_flags(format, str);
+			format->flag_minus = 1;
+			treat_width(format, ft_strlen(str) - format->flag_minus);
+			treat_flags(format, str);
+		}
 	}
 	else
 	{

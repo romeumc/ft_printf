@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 16:29:21 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/27 18:17:39 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/27 20:26:24 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_minus_ifnegative(t_format *format)
 {
-	if (format->precision == 1 && format->flag_minus == 0 && format->negative_width == 0 && ft_strequ(format->conversion, "decimal"))
+	if (format->precision == 1 && format->flag_minus == 0 && format->neg_width == 0 && ft_strequ(format->conversion, "decimal"))
 	{
 		if (format->negative_nb == 1 && format->flag_zero == 0 && format->neg_precision == 0)
 			output_putchar(format, '-');
