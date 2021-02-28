@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_conversion3.c                                 :+:      :+:    :+:   */
+/*   make_conversion_n.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 23:58:18 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/28 00:09:01 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/28 18:23:52 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,21 @@ static void	conversion_nll(t_format *format, va_list ap)
 	*ptr = (long long int)format->output_lenght;
 }
 
+static void	conversion_nh(t_format *format, va_list ap)
+{
+	short int	*ptr;
+
+	ptr = va_arg(ap, void *);
+	*ptr = (short int)format->output_lenght;
+}
+
+static void	conversion_nhh(t_format *format, va_list ap)
+{
+	char	*ptr;
+
+	ptr = va_arg(ap, void *);
+	*ptr = (char)format->output_lenght;
+}
 
 void	conversion_n_chars(t_format *format, va_list ap)
 {
@@ -45,4 +60,8 @@ void	conversion_n_chars(t_format *format, va_list ap)
 		conversion_nl(format, ap);
 	else if (format->modifier_l == 2)
 		conversion_nll(format, ap);
+	else if (format->modifier_h == 1)
+		conversion_nh(format, ap);
+	else if (format->modifier_h == 2)
+		conversion_nhh(format, ap);
 }
