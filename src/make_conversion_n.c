@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 23:58:18 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/28 18:23:52 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/28 22:17:53 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	conversion_n(t_format *format, va_list ap)
 	*ptr = (int)format->output_lenght;
 }
 
-static void	conversion_nl(t_format *format, va_list ap)
+static void	conversion_ln(t_format *format, va_list ap)
 {
 	long int *ptr;
 
@@ -28,7 +28,7 @@ static void	conversion_nl(t_format *format, va_list ap)
 	*ptr = (long int)format->output_lenght;
 }
 
-static void	conversion_nll(t_format *format, va_list ap)
+static void	conversion_lln(t_format *format, va_list ap)
 {
 	long long int *ptr;
 
@@ -36,7 +36,7 @@ static void	conversion_nll(t_format *format, va_list ap)
 	*ptr = (long long int)format->output_lenght;
 }
 
-static void	conversion_nh(t_format *format, va_list ap)
+static void	conversion_hn(t_format *format, va_list ap)
 {
 	short int	*ptr;
 
@@ -44,7 +44,7 @@ static void	conversion_nh(t_format *format, va_list ap)
 	*ptr = (short int)format->output_lenght;
 }
 
-static void	conversion_nhh(t_format *format, va_list ap)
+static void	conversion_hhn(t_format *format, va_list ap)
 {
 	char	*ptr;
 
@@ -52,16 +52,16 @@ static void	conversion_nhh(t_format *format, va_list ap)
 	*ptr = (char)format->output_lenght;
 }
 
-void	conversion_n_chars(t_format *format, va_list ap)
+void	conversion_nchars(t_format *format, va_list ap)
 {
 	if (format->modifier_l == 0)
 		conversion_n(format, ap);
 	else if (format->modifier_l == 1)
-		conversion_nl(format, ap);
+		conversion_ln(format, ap);
 	else if (format->modifier_l == 2)
-		conversion_nll(format, ap);
+		conversion_lln(format, ap);
 	else if (format->modifier_h == 1)
-		conversion_nh(format, ap);
+		conversion_hn(format, ap);
 	else if (format->modifier_h == 2)
-		conversion_nhh(format, ap);
+		conversion_hhn(format, ap);
 }

@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/28 20:08:36 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/28 22:17:19 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,5 @@ void	make_conversion(t_format *format, va_list ap)
 	if (ft_strequ(format->conversion, "heX"))
 		conversion_hex(format, ap, "upper");
 	if (ft_strequ(format->conversion, "n_chars"))
-		conversion_n_chars(format, ap);
+		conversion_nchars(format, ap);
 }
