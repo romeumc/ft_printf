@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 16:29:21 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/27 20:26:24 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/28 17:02:39 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,7 @@ void	precheck_flags(t_format *format, char *str)
 		{
 			format->precision_size += 1;
 		}
-	}
-	
+	}	
 	if (format->flag_plus == 1 && format->negative_nb == 0)
 	{
 		if (format->precision == 1 && ft_strequ(str, "0") && ft_strequ(format->conversion, "decimal")

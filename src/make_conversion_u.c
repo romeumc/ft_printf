@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 16:33:58 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/28 16:39:58 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/28 17:00:48 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	conversion_u(t_format *format, va_list ap)
 	unsigned int	d;
 	char			*str;
 
-	d = (unsigned int)va_arg(ap, int);
+	d = (unsigned int)va_arg(ap, unsigned int);
 	if (d == 0)
 		str = ft_strdup("0");
 	else
@@ -32,7 +32,7 @@ static void	conversion_ul(t_format *format, va_list ap)
 	unsigned long int	d;
 	char				*str;
 
-	d = (unsigned long int)va_arg(ap, int);
+	d = (unsigned long int)va_arg(ap, unsigned long int);
 	if (d == 0)
 		str = ft_strdup("0");
 	else
@@ -47,7 +47,7 @@ static void	conversion_ull(t_format *format, va_list ap)
 	unsigned long long int	d;
 	char					*str;
 
-	d = (unsigned long long int)va_arg(ap, int);
+	d = (unsigned long long int)va_arg(ap, unsigned long long int);
 	if (d == 0)
 		str = ft_strdup("0");
 	else

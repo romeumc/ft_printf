@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:55:17 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/28 16:25:55 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/28 16:47:02 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -2151,12 +2151,12 @@ int	main(void)
 	printf("\ndecimal:%u | mine:%s", 0u, str);
 	free(str);
 
-	str = ft_ulonglongtoa(2546222222222287);
-	printf("\ndecimal:%ld | mine:%s", 2546222222222287, str);
+	str = ft_ulongtoa(22337203685477ul);
+	printf("\ndecimal:%ld | mine:%s", 22337203685477ul, str);
 	free(str);
 
-	str = ft_ulonglongtoa(4294967295llu);
-	printf("\ndecimal:%llu | mine:%s", 4294967295llu, str);
+	str = ft_ulonglongtoa(522337203685470ull);
+	printf("\ndecimal:%llu | mine:%s", 522337203685470ull, str);
 	free(str);
 
 
