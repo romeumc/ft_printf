@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/27 20:26:24 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/27 23:58:33 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,6 @@ void	conversion_percentage(t_format *format)
 		treat_width(format, 1);
 		output_putchar(format, '%');
 	}
-}
-
-void	conversion_n_chars(t_format *format, va_list ap)
-{
-	int *ptr;
-	
-	ptr = va_arg(ap, void *);
-	*ptr = format->output_lenght;
 }
 
 void	make_conversion(t_format *format, va_list ap)

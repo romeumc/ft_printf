@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/27 20:26:14 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/28 00:07:00 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define PREFIXHEX "0x"
 # define HEX "0123456789abcdef"
 # define HEXCAP "0123456789ABCDEF"
+# define LENGHTMODIFIER "lh"
 
 typedef struct	s_format
 {
@@ -72,5 +73,6 @@ void			treat_width_decimal(t_format *format, int len);
 void			print_hex_cardinal(t_format *format, char *str);
 void			treat_flags(t_format *format, char *str);
 void			precheck_flags(t_format *format, char *str);
+void			conversion_n_chars(t_format *format, va_list ap);
 
 #endif

@@ -6,14 +6,13 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 11:12:23 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/25 10:31:03 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/27 22:38:42 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-static void	ft_print_radix(unsigned long int nb, char *base, char *result, int *pos)
+static void	ft_print_radix(unsigned long nb, char *base, char *result, int *pos)
 {
 	unsigned int	len_base;
 

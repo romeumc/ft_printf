@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 17:19:36 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/26 16:24:54 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/27 23:44:02 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,17 @@ void	conversion_string(t_format *format, va_list ap)
 
 void	conversion_int(t_format *format, va_list ap)
 {
-	int		d;
+	long long int		d;
 	char	*str;
 	char	*temp;
 
-	d = va_arg(ap, int);
-	temp = ft_itoa(d);
+	if (format->modifier_l == 0)
+		d = (long long)va_arg(ap, int);
+	else if (format->modifier_l == 1)
+		d = (long long)va_arg(ap, long int);
+	else if (format->modifier_l == 2)
+		d = (long long)va_arg(ap, long long int);
+	temp = ft_longlongtoa(d);
 	if (d < 0)
 	{
 		format->negative_nb = 1;
@@ -39,9 +44,6 @@ void	conversion_int(t_format *format, va_list ap)
 	}
 	else
 	{
-		// if (format->flag_space == 1)
-		// 	str = ft_strjoin(" ", temp);
-		// else
 			str = ft_strdup(temp);
 	}
 	free(temp);
@@ -66,7 +68,7 @@ void	conversion_hex(t_format *format, va_list ap, char *type)
 	unsigned int	d;
 	char			*str;
 
-	d = (unsigned int)va_arg(ap, int);
+	d = (unsigned int)va_arg(ap, unsigned int);
 	if (ft_strequ(type, "lower"))
 	{
 		if (format->flag_cardinal == 1)
