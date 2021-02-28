@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:48:09 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/27 22:00:17 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/28 00:16:19 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ static void	get_precision(char fmt_char, t_format *format, va_list ap)
 		format->precision = 1;
 }
 
-static void	get_lenght_modifier(char fmt_char, t_format *format)
-{
-	if (fmt_char == 'l')
-		format->modifier_l++;
-	if (fmt_char == 'h')
-		format->modifier_h++;
-}
+// static void	get_lenght_modifier(char fmt_char, t_format *format)
+// {
+// 	if (fmt_char == 'l')
+// 		format->modifier_l++;
+// 	if (fmt_char == 'h')
+// 		format->modifier_h++;
+// }
 
 void		parse_fmt(size_t *i, const char *fmt, t_format *format, va_list ap)
 {
@@ -112,7 +112,10 @@ void		parse_fmt(size_t *i, const char *fmt, t_format *format, va_list ap)
 	}
 	while (ft_strchr(LENGHTMODIFIER, fmt[*i]))
 	{
-		get_lenght_modifier(fmt[*i], format);
+		if (fmt[*i] == 'l')
+			format->modifier_l++;
+		if (fmt[*i] == 'h')
+			format->modifier_h++;
 		*i += 1;
 	}
 	format->conversion = get_convertion(fmt[*i]);

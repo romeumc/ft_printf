@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 17:19:36 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/27 23:44:02 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/28 16:36:04 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,6 @@ void	conversion_int(t_format *format, va_list ap)
 			str = ft_strdup(temp);
 	}
 	free(temp);
-	print_string(format, str);
-	free(str);
-}
-
-void	conversion_unsigned_int(t_format *format, va_list ap)
-{
-	unsigned int	d;
-	char			*str;
-
-	d = (unsigned int)va_arg(ap, int);
-	str = ft_longtoa(d);
-	format->conversion = "decimal";
 	print_string(format, str);
 	free(str);
 }
