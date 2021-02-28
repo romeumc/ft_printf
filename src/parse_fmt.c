@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:48:09 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/28 00:16:19 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/28 21:43:47 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ void		parse_fmt(size_t *i, const char *fmt, t_format *format, va_list ap)
 	}
 	while (ft_strchr(LENGHTMODIFIER, fmt[*i]))
 	{
+		if (format->modifier_h == 2 || format->modifier_l == 2)
+			break;
 		if (fmt[*i] == 'l')
 			format->modifier_l++;
 		if (fmt[*i] == 'h')

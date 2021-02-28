@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/28 16:36:49 by rmartins         ###   ########.fr        #
+#    Updated: 2021/02/28 21:57:04 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 SRC = ft_printf.c \
 		parse_fmt.c \
 		make_conversion.c \
-		make_conversion2.c \
+		make_conversion_s.c \
+		make_conversion_d.c \
+		make_conversion_x.c \
 		make_conversion_n.c \
 		make_conversion_u.c \
 		treat_conversion.c \

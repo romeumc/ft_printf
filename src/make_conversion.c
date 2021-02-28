@@ -6,13 +6,13 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/27 23:58:33 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/28 20:08:36 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-void	conversion_pointer(t_format *format, va_list ap)
+static void	conversion_pointer(t_format *format, va_list ap)
 {
 	unsigned long	address;
 	char			*str;
@@ -35,7 +35,7 @@ void	conversion_pointer(t_format *format, va_list ap)
 	}
 }
 
-void	conversion_char(t_format *format, va_list ap)
+static void	conversion_char(t_format *format, va_list ap)
 {
 	char c;
 
@@ -52,7 +52,7 @@ void	conversion_char(t_format *format, va_list ap)
 	}
 }
 
-void	conversion_percentage(t_format *format)
+static void	conversion_percentage(t_format *format)
 {
 	if (format->flag_minus == 1 || format->neg_width == 1)
 	{
