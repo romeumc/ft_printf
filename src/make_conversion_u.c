@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 16:33:58 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/28 19:08:16 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/28 23:57:05 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static void	conversion_uhh(t_format *format, va_list ap)
 	free(str);
 }
 
-void	conversion_unsigned_int(t_format *format, va_list ap)
+void		conversion_unsigned_int(t_format *format, va_list ap)
 {
 	if (format->modifier_l == 0 && format->modifier_h == 0)
 		conversion_u(format, ap);

@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 21:56:23 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/28 22:48:19 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/28 23:54:08 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ static char	*conversion_hhx(t_format *format, va_list ap, char *type)
 	else
 	{
 		if (format->flag_cardinal == 1)
-			format->flag_cardinal = 20; 
+			format->flag_cardinal = 20;
 		if (d == -1)
 			return (ft_strdup("FF"));
 		else
-			return(ft_ulonglong_tobase(d, HEXCAP) + 0);
+			return (ft_ulonglong_tobase(d, HEXCAP) + 0);
 	}
 }
 
@@ -51,12 +51,12 @@ static char	*conversion_hx(t_format *format, va_list ap, char *type)
 	else
 	{
 		if (format->flag_cardinal == 1)
-			format->flag_cardinal = 20; 
-		return(ft_ulonglong_tobase(d, HEXCAP));
+			format->flag_cardinal = 20;
+		return (ft_ulonglong_tobase(d, HEXCAP));
 	}
 }
 
-void	conversion_hex(t_format *format, va_list ap, char *type)
+void		conversion_hex(t_format *format, va_list ap, char *type)
 {
 	unsigned long long int	d;
 	char					*str;
@@ -77,7 +77,6 @@ void	conversion_hex(t_format *format, va_list ap, char *type)
 		str = conversion_hhx(format, ap, type);
 		type = "";
 	}
-
 	if (ft_strequ(type, "lower"))
 	{
 		if (format->flag_cardinal == 1)
@@ -87,7 +86,7 @@ void	conversion_hex(t_format *format, va_list ap, char *type)
 	else if (ft_strequ(type, "upper"))
 	{
 		if (format->flag_cardinal == 1)
-			format->flag_cardinal = 20; 
+			format->flag_cardinal = 20;
 		str = ft_ulong_tobase(d, HEXCAP);
 	}
 	format->conversion = "decimal";

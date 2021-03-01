@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/28 22:17:19 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/01 00:01:33 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	conversion_percentage(t_format *format)
 	}
 }
 
-void	make_conversion(t_format *format, va_list ap)
+void		make_conversion(t_format *format, va_list ap)
 {
 	if (ft_strequ(format->conversion, "percentage"))
 		conversion_percentage(format);
@@ -86,4 +86,6 @@ void	make_conversion(t_format *format, va_list ap)
 		conversion_hex(format, ap, "upper");
 	if (ft_strequ(format->conversion, "n_chars"))
 		conversion_nchars(format, ap);
+	if (ft_strequ(format->conversion, "float"))
+		conversion_float(format, ap);
 }

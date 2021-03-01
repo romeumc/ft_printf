@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 17:02:34 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/27 20:26:24 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/01 00:09:28 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	debub______________________________________________________________format(t
 	printf(ANSI_B_BBLUE "plus:[%d]" ANSI_RESET " ", format->flag_plus);
 }
 
-void	print_string_precision_minus(t_format *f, char *str, int len_diff, int output_len)
+static void	print_string_precision_minus(t_format *f, char *str, int len_diff, int output_len)
 {
 	if (ft_strequ(f->conversion, "decimal"))
 	{
@@ -45,7 +45,7 @@ void	print_string_precision_minus(t_format *f, char *str, int len_diff, int outp
 	}
 }
 
-void	print_string_precision_no_minus(t_format *f, char *str,
+static void	print_string_precision_no_minus(t_format *f, char *str,
 	int len_diff, int output_len)
 {
 	if (ft_strequ(f->conversion, "decimal"))
@@ -66,7 +66,7 @@ void	print_string_precision_no_minus(t_format *f, char *str,
 	}
 }
 
-void	print_string_with_precision(t_format *format, char *str)
+static void	print_string_with_precision(t_format *format, char *str)
 {
 	int	len_diff;
 	int	output_len;
@@ -92,7 +92,7 @@ void	print_string_with_precision(t_format *format, char *str)
 		print_string_precision_no_minus(format, str, len_diff, output_len);
 }
 
-void	print_string_without_precision(t_format *format, char *str)
+static void	print_string_without_precision(t_format *format, char *str)
 {
 	if (format->flag_zero == 0)
 	{

@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/28 21:57:04 by rmartins         ###   ########.fr        #
+#    Updated: 2021/03/01 00:12:53 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC = ft_printf.c \
 		make_conversion_x.c \
 		make_conversion_n.c \
 		make_conversion_u.c \
+		make_conversion_f.c \
 		treat_conversion.c \
 		treat_width_precision.c \
 		print_output.c \
@@ -56,13 +57,13 @@ $(OBJ_DIR):
 
 clean:
 	@echo $(ANSI_B_RED) "clean" $(ANSI_RESET)$(ANSI_F_BRED)
-	$(MAKE) clean -C libft
+	# $(MAKE) clean -C libft
 	rm -rf $(OBJ_DIR)
 	@echo $(ANSI_RESET) ""
 
 fclean: clean
 	@echo $(ANSI_B_RED) "fclean" $(ANSI_RESET)$(ANSI_F_BRED)
-	$(MAKE) fclean -C libft
+	# $(MAKE) fclean -C libft
 	rm -f $(NAME)
 	@echo $(ANSI_RESET) ""
 

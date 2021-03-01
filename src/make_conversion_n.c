@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 23:58:18 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/28 22:17:53 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/02/28 23:56:29 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	conversion_hn(t_format *format, va_list ap)
 {
 	short int	*ptr;
 
-	ptr = va_arg(ap, void *);
+	ptr = va_arg(ap, short int *);
 	*ptr = (short int)format->output_lenght;
 }
 
@@ -52,7 +52,7 @@ static void	conversion_hhn(t_format *format, va_list ap)
 	*ptr = (char)format->output_lenght;
 }
 
-void	conversion_nchars(t_format *format, va_list ap)
+void		conversion_nchars(t_format *format, va_list ap)
 {
 	if (format->modifier_l == 0)
 		conversion_n(format, ap);
