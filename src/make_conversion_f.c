@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 19:42:42 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/02 13:57:44 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/02 16:53:28 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,33 @@ void		conversion_float(t_format *format, va_list ap)
 	int		i;
 	int		dr;
 
-	f = (float)va_arg(ap, double);
-	d = (int)f;
-	remainer = f - d;
-	i = 0;
-
 	if (format->precision == 0 && format->precision_set == 0)
 		format->precision_size = 6;
-	while (i < format->precision_size)
+	f = (float)va_arg(ap, double);
+	d = (int)f;
+	str_decimal = ft_itoa(d);
+	remainer = f - d;
+	if (remainer == 0)
 	{
-		remainer *= 10;
-		i++;
+		i = 0;
+		while (i < format->precision_size)
+		{
+			str_remainder[i] = '0';
+			i++;
+		}
+		str_remainder[i] = '\0';
 	}
-	dr = (int)remainer;
+	else
+	{
+		i = 0;
+		while (i < format->precision_size)
+		{
+			remainer *= 10;
+			i++;
+		}
+		dr = (int)remainer;
+		str_remainder = ft_itoa(dr);
+	}
 
 
 	// debub__f____________________________________________________________format(format);
@@ -60,8 +74,6 @@ void		conversion_float(t_format *format, va_list ap)
 	// printf("int:%d ", d);
 	// printf("remainer:%f\n", remainer);
 
-	str_decimal = ft_itoa(d);
-	str_remainder = ft_itoa(dr);
 	
 	temp = ft_strjoin(str_decimal, ".");
 	final = ft_strjoin(temp, str_remainder);
