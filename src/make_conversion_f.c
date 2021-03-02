@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 19:42:42 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/01 00:21:05 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/02 13:57:44 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,32 +29,48 @@ void	debub__f____________________________________________________________format(
 
 void		conversion_float(t_format *format, va_list ap)
 {
-	// char	*str;
-	// char	*temp;
+	char	*str_decimal;
+	char	*str_remainder;
+	char	*temp;
+	char	*final;
+
 	float	f;
 	int		d;
 	float	remainer;
+	int		i;
+	int		dr;
 
 	f = (float)va_arg(ap, double);
 	d = (int)f;
 	remainer = f - d;
+	i = 0;
 
-	debub__f____________________________________________________________format(format);
-	printf("float:%f ", f);
-	printf("int:%d ", d);
-	printf("remainer:%f\n", remainer);
-	if (format->negative_nb == 1)
+	if (format->precision == 0 && format->precision_set == 0)
+		format->precision_size = 6;
+	while (i < format->precision_size)
 	{
-		printf("a");
+		remainer *= 10;
+		i++;
 	}
+	dr = (int)remainer;
 
-	// 	str = ft_substr(temp, 1, ft_strlen(temp) - 1);
-	// }
-	// else
-	// {
-	// 		str = ft_strdup(temp);
-	// }
-	// free(temp);
-	// print_string(format, str);
-	// free(str);
+
+	// debub__f____________________________________________________________format(format);
+	// printf("float:%f ", f);
+	// printf("int:%d ", d);
+	// printf("remainer:%f\n", remainer);
+
+	str_decimal = ft_itoa(d);
+	str_remainder = ft_itoa(dr);
+	
+	temp = ft_strjoin(str_decimal, ".");
+	final = ft_strjoin(temp, str_remainder);
+
+	//printf("%s\n", final);
+	print_string(format, final);
+	
+	free(str_decimal);
+	free(str_remainder);
+	free(temp);
+	free(final);
 }

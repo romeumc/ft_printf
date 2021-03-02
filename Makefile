@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/03/01 00:12:53 by rmartins         ###   ########.fr        #
+#    Updated: 2021/03/02 11:22:36 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,13 +35,13 @@ SRC = ft_printf.c \
 
 all: $(NAME)
 
-$(NAME): $(OBJ) #lib
+$(NAME): $(OBJ)
 	@echo $(ANSI_B_BGREEN) "compile libft" $(ANSI_RESET)$(ANSI_F_BBLACK)
 	$(MAKE) all -C libft
 	cp libft/libft.a $(NAME)
 	@echo $(ANSI_RESET) ""
 	@echo $(ANSI_B_BGREEN) "create library" $(ANSI_RESET)$(ANSI_F_BBLACK)
-	$(AR) $(NAME) $?
+	$(AR) $(NAME) $^
 	@echo $(ANSI_RESET) ""
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c

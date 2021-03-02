@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:48:09 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/28 23:48:16 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/02 11:32:08 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static void	get_precision(char fmt_char, t_format *format, va_list ap)
 {
 	if (format->precision == 1)
 	{
+		format->precision_set = 1;
 		if (fmt_char == '*')
 			format->precision_size = va_arg(ap, int);
 		else

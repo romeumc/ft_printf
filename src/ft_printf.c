@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 23:03:02 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/27 22:02:09 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/02 11:16:44 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	init_list(t_format *format, int size)
 	format->flag_space = 0;
 	format->flag_plus = 0;
 	format->precision = 0;
+	format->precision_set = 0;
 	format->precision_size = 0;
 	format->neg_precision = 0;
 	format->negative_nb = 0;
