@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 17:02:34 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/01 00:09:28 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/02 23:27:30 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ void	debub______________________________________________________________format(t
 	printf(ANSI_B_BBLUE "precision:[%d]" ANSI_RESET " ", format->precision);
 	printf(ANSI_B_BBLUE "precision_size:[%d]" ANSI_RESET " ", format->precision_size);
 	printf(ANSI_B_BBLUE "minus:[%d]" ANSI_RESET " ", format->flag_minus);
-	printf(ANSI_B_BBLUE "neg_precision:[%d]" ANSI_RESET " ", format->neg_precision);
-	printf(ANSI_B_BBLUE "neg_width:[%d]" ANSI_RESET " ", format->neg_width);
+	// printf(ANSI_B_BBLUE "neg_precision:[%d]" ANSI_RESET " ", format->neg_precision);
+	// printf(ANSI_B_BBLUE "neg_width:[%d]" ANSI_RESET " ", format->neg_width);
 	printf(ANSI_B_BBLUE "negative_nb:[%d]" ANSI_RESET " ", format->negative_nb);
-	printf(ANSI_B_BBLUE "sharp:[%d]" ANSI_RESET " ", format->flag_cardinal);
-	printf(ANSI_B_BBLUE "space:[%d]" ANSI_RESET " ", format->flag_space);
-	printf(ANSI_B_BBLUE "plus:[%d]" ANSI_RESET " ", format->flag_plus);
+	// printf(ANSI_B_BBLUE "sharp:[%d]" ANSI_RESET " ", format->flag_cardinal);
+	// printf(ANSI_B_BBLUE "space:[%d]" ANSI_RESET " ", format->flag_space);
+	// printf(ANSI_B_BBLUE "plus:[%d]" ANSI_RESET " ", format->flag_plus);
+	printf(ANSI_B_BBLUE "precision_set:[%d]" ANSI_RESET " ", format->precision_set);
 }
 
 static void	print_string_precision_minus(t_format *f, char *str, int len_diff, int output_len)

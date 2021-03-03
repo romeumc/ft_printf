@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/07 22:00:16 by rmartins          #+#    #+#              #
-#    Updated: 2021/02/28 17:05:06 by rmartins         ###   ########.fr        #
+#    Updated: 2021/03/03 16:41:25 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_itoa_base_bonus.c ft_realloc_bonus.c ft_putnstr_bonus.c \
 		ft_ulong_tobase_bonus.c ft_getsize_ulonginbase_bonus.c \
 		ft_longtoa_bonus.c ft_longlongtoa_bonus.c ft_ulonglongtoa_bonus.c \
-		ft_ulongtoa_bonus.c ft_utoa_bonus.c ft_ulonglong_tobase_bonus.c
+		ft_ulongtoa_bonus.c ft_utoa_bonus.c ft_ulonglong_tobase_bonus.c \
+		ft_recursive_power.c ft_recursive_power_longlong.c ft_iterative_power_longlong.c
 		# ft_swap_bonus.c ft_sqrt_bonus.c  \
 			 
 
