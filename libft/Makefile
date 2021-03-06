@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/07 22:00:16 by rmartins          #+#    #+#              #
-#    Updated: 2021/03/03 16:41:25 by rmartins         ###   ########.fr        #
+#    Updated: 2021/03/06 17:41:14 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ $(NAME): $(OBJS)
 	$(AR) $(NAME) $?
 
 $(DIR_OBJS)%.o: %.c
-	gcc $(CFLAGS) -include $(HEADER) -c $< -o $@
+	gcc $(CFLAGS) -g -include $(HEADER) -c $< -o $@
 
 $(OBJS):	| $(DIR_OBJS)
 $(DIR_OBJS):

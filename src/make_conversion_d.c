@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 19:42:42 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/28 23:49:55 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/06 15:43:58 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void		conversion_int(t_format *format, va_list ap)
 		temp = conversion_hd(format, ap);
 	else if (format->modifier_h == 2 && format->modifier_l == 0)
 		temp = conversion_hhd(format, ap);
+	else
+		temp = ft_strdup("");
 	if (format->negative_nb == 1)
 	{
 		str = ft_substr(temp, 1, ft_strlen(temp) - 1);

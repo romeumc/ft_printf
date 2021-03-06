@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/03/02 11:22:36 by rmartins         ###   ########.fr        #
+#    Updated: 2021/03/06 17:40:02 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo $(ANSI_B_BGREEN) "compile ft_printf objects" $(ANSI_RESET)$(ANSI_F_BBLACK)
-	gcc $(CFLAGS) -include $(HEADER) -c $< -o $@
+	gcc $(CFLAGS) -g -include $(HEADER) -c $< -o $@
 	@echo $(ANSI_RESET)
 
 $(OBJ): | $(OBJ_DIR)
@@ -94,7 +94,7 @@ libnorm2:
 
 run: all
 	@echo $(ANSI_B_RED) "Running for debbuger without sanitize" $(ANSI_RESET)
-	@gcc $(CFLAGS) -g3 main.c $(NAME) && ./a.out
+	@gcc $(CFLAGS) -g main.c $(NAME) && ./a.out
 
 runv: all runs run
 	@echo $(ANSI_B_RED) "Valgrind RESULT" $(ANSI_RESET)
