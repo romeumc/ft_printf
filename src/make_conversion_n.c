@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 23:58:18 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/06 17:53:34 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/06 21:42:06 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,14 @@ static void	conversion_hhn(t_format *format, va_list ap)
 
 void		conversion_nchars(t_format *format, va_list ap)
 {
-	if (format->modifier_l == 0)
+	if (format->modifier_l == 0 && format->modifier_h == 0)
 		conversion_n(format, ap);
-	else if (format->modifier_l == 1)
+	else if (format->modifier_l == 1 && format->modifier_h == 0)
 		conversion_ln(format, ap);
-	else if (format->modifier_l == 2)
+	else if (format->modifier_l == 2 && format->modifier_h == 0)
 		conversion_lln(format, ap);
-	else if (format->modifier_h == 1)
+	else if (format->modifier_h == 1 && format->modifier_l == 0)
 		conversion_hn(format, ap);
-	else if (format->modifier_h == 2)
+	else if (format->modifier_h == 2 && format->modifier_l == 0)
 		conversion_hhn(format, ap);
 }

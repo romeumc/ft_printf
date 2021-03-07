@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 19:42:42 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/03 16:55:40 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/07 01:53:18 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ long double	ft_roundup(t_format *format, long double remainder)
 {
 	long double temp;
 
-	temp = (5.0 / ft_recursive_power_ll(10, format->precision_size + 1));
-	printf("[TESTE:%.17Lf %d]", temp, format->precision_size);
-	printf("10^17 %llu", ft_iterative_power_ll(10,11));
+	temp = (5.0 / ft_iterative_power_ll(10, format->precision_size + 1));
+	//printf("[TESTE:%.17Lf %d]", temp, format->precision_size);
+	//printf("10^17 %llu", ft_iterative_power_ll(10,11));
 	remainder += temp;
 	return (remainder);
 }
@@ -81,18 +81,18 @@ char	*get_remainder(t_format *format, long double remainder)
 
 
 	//printf(ANSI_B_GREEN "[resto:%f]" ANSI_RESET, remainder);
-	if (format->precision == 0 && format->precision_set == 0)
-	{
-		format->precision_set = 1;
-		format->precision_size = 6;
-	}
-	else if (format->precision == 1 && format->precision_set == 0)
-	{
-		format->precision_size = 1;
-	}
+	// if (format->precision == 0 && format->precision_set == 0)
+	// {
+	// 	format->precision_set = 1;
+	// 	format->precision_size = 6;
+	// }
+	// else if (format->precision == 1 && format->precision_set == 0)
+	// {
+	// 	format->precision_size = 1;
+	// }
 
-	if (remainder < 0)
-		remainder *= -1;
+	// if (remainder < 0)
+	// 	remainder *= -1;
 	// if (remainder != 0)
 	// 	remainder = ft_roundup(format, remainder);
 	i = 0;
@@ -115,7 +115,15 @@ char	*get_remainder(t_format *format, long double remainder)
 	return (str_remainder);
 }
 
+int	ft_isinf(double num)
+{
+	return (num == (1.0 / 0.0) || num == (-1.0 / 0.0));
+}
 
+int	ft_isnan(double num)
+{
+	return (num == (0.0 / 0.0) || num == (-0.0 / 0.0));
+}
 
 void		conversion_float(t_format *format, va_list ap)
 {
@@ -127,46 +135,80 @@ void		conversion_float(t_format *format, va_list ap)
 
 	
 	f = va_arg(ap, double);
-	temp = ft_longlongtoa((long long int)f);
-	if (f < 0)
+	if (ft_isinf(f))
 	{
-		//printf(ANSI_B_RED "NEG %s" ANSI_RESET, temp);
-		format->negative_nb = 1;
-		str_decimal = ft_substr(temp, 1, ft_strlen(temp) - 1);
+		if (f < 0)
+		{
+			format->negative_nb = 1;
+		}
+		format->flag_zero = 0;
+		temp = ft_strdup("inf");
+		print_float(format, temp);
+	}
+	else if (ft_isnan(f))
+	{
+		if (f < 0)
+		{
+			format->negative_nb = 1;
+		}
+		format->flag_zero = 0;
+		temp = ft_strdup("nan");
+		print_float(format, temp);
 	}
 	else
 	{
-		//printf(ANSI_B_BGREEN "POS %s" ANSI_RESET, temp);
-		if ((long long)f < 0)
+		if (format->precision == 0 && format->precision_set == 0)
+		{
+			format->precision_set = 1;
+			format->precision_size = 6;
+		}
+		else if (format->precision == 1 && format->precision_set == 0)
+		{
+			format->precision_size = 1;
+		}
+		f = ft_roundup(format, f);
+		temp = ft_longlongtoa((long long int)f);
+	
+		if (f < 0)
+		{
+			//printf(ANSI_B_RED "NEG %s" ANSI_RESET, temp);
+			format->negative_nb = 1;
 			str_decimal = ft_substr(temp, 1, ft_strlen(temp) - 1);
+		}
 		else
-			str_decimal = ft_strdup(temp);
-	}
-	if (ft_strequ(temp, "0"))
-	{
-		free(str_decimal);
-		str_decimal = ft_strdup("0");
-	}
-	//printf(ANSI_B_BCYAN "%s" ANSI_RESET, str_decimal);
-	free(temp);
-	str_remainder = get_remainder(format, f - (long)f);
-	
-	if (format->precision_set == 0)
-		temp = ft_strdup("");
-	else
-	{
-		format->precision_size = 0;
-		temp = ft_strjoin(".", str_remainder);
-	}
-	final = ft_strjoin(str_decimal, temp);
+		{
+			//printf(ANSI_B_BGREEN "POS %s" ANSI_RESET, temp);
+			if ((long long)f < 0)
+				str_decimal = ft_substr(temp, 1, ft_strlen(temp) - 1);
+			else
+				str_decimal = ft_strdup(temp);
+		}
+		if (ft_strequ(temp, "0"))
+		{
+			free(str_decimal);
+			str_decimal = ft_strdup("0");
+		}
+		//printf(ANSI_B_BCYAN "%s" ANSI_RESET, str_decimal);
+		free(temp);
+		str_remainder = get_remainder(format, f - (long)f);
+		
+		if (format->precision_set == 0 || format->precision_size == 0)
+			temp = ft_strdup("");
+		else
+		{
+			format->precision_size = 0;
+			temp = ft_strjoin(".", str_remainder);
+		}
+		final = ft_strjoin(str_decimal, temp);
 
-	//format->conversion = "decimal";
-	print_float(format, final);
-	//print_string(format, final);
-	//printf(ANSI_F_BCYAN "[%s]" ANSI_RESET, final);
-	
-	free(str_decimal);
-	free(str_remainder);
+		//format->conversion = "decimal";
+		print_float(format, final);
+		//print_string(format, final);
+		//printf(ANSI_F_BCYAN "[%s]" ANSI_RESET, final);
+		
+		free(str_decimal);
+		free(str_remainder);
+		free(final);
+	}
 	free(temp);
-	free(final);
 }

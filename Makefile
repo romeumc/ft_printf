@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/03/06 17:40:02 by rmartins         ###   ########.fr        #
+#    Updated: 2021/03/06 22:40:36 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,13 +57,13 @@ $(OBJ_DIR):
 
 clean:
 	@echo $(ANSI_B_RED) "clean" $(ANSI_RESET)$(ANSI_F_BRED)
-	# $(MAKE) clean -C libft
+	$(MAKE) clean -C libft
 	rm -rf $(OBJ_DIR)
 	@echo $(ANSI_RESET) ""
 
 fclean: clean
 	@echo $(ANSI_B_RED) "fclean" $(ANSI_RESET)$(ANSI_F_BRED)
-	# $(MAKE) fclean -C libft
+	$(MAKE) fclean -C libft
 	rm -f $(NAME)
 	@echo $(ANSI_RESET) ""
 
@@ -106,7 +106,7 @@ runs: all
 
 rune: all
 	@echo $(ANSI_B_RED) "Running without flag ERROR" $(ANSI_RESET)
-	@gcc $(CFLAGSERROR) -g3 -fsanitize=address main.c $(NAME) && ./a.out && rm a.out
+	@gcc $(CFLAGSERROR) -g3 -fsanitize=address main.c $(NAME) && ./a.out
 
 # colors
 ANSI_RESET = "\033[0m"
