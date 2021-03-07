@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:48:09 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/02 11:32:08 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/07 22:53:01 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ static void	get_flags(char fmt_char, t_format *format)
 	if (fmt_char == ' ')
 		format->flag_space = 1;
 	if (fmt_char == '+')
-	{
 		format->flag_plus = 1;
-		format->flag_space = 0;
-	}
 }
 
 static void	get_width(char fmt_char, t_format *format, va_list ap)

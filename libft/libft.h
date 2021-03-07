@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 21:30:52 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/03 16:41:09 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/07 15:15:47 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,6 @@ char			*ft_utoa(unsigned int n);
 int				ft_recursive_power(int nb, int power);
 unsigned long long			ft_recursive_power_ll(unsigned long long nb, int power);
 unsigned long long			ft_iterative_power_ll(unsigned long long nb, int power);
+int				ft_isinf(double num);
+
 #endif

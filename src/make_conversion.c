@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/01 00:01:33 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/07 23:03:06 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ static void	conversion_percentage(t_format *format)
 
 void		make_conversion(t_format *format, va_list ap)
 {
+	if (format->flag_space == 1 && format->flag_plus == 1)
+		format->flag_space = 0;
 	if (ft_strequ(format->conversion, "percentage"))
 		conversion_percentage(format);
 	if (ft_strequ(format->conversion, "string"))
