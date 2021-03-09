@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/03/06 22:40:36 by rmartins         ###   ########.fr        #
+#    Updated: 2021/03/08 22:00:13 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = ft_printf.c \
 		make_conversion_n.c \
 		make_conversion_u.c \
 		make_conversion_f.c \
+		make_conversion_e.c \
 		treat_conversion.c \
 		treat_width_precision.c \
 		print_output.c \

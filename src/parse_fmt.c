@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:48:09 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/07 22:53:01 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/08 22:02:53 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static char	*get_convertion(char fmt_char)
 		return ("n_chars");
 	if (fmt_char == 'f')
 		return ("float");
+	if (fmt_char == 'e')
+		return ("engenier");
 	else
 		return (NULL);
 }

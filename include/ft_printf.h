@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/02 10:55:44 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/08 21:59:53 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void			conversion_hex(t_format *format, va_list ap, char *type);
 void			conversion_nchars(t_format *format, va_list ap);
 void			conversion_unsigned_int(t_format *format, va_list ap);
 void			conversion_float(t_format *format, va_list ap);
+void			conversion_engenier(t_format *format, va_list ap);
 
 void			print_hex_cardinal(t_format *format, char *str);
 
