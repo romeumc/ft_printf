@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/09 16:38:36 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 19:43:16 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ static void	conversion_pointer(t_format *format, va_list ap)
 	char			*str;
 
 	address = (unsigned long)va_arg(ap, void *);
-	str = ft_ulong_tobase(address, HEX);
+	if (address == 0 && format->precision == 1)
+		str = ft_strdup("");
+	else
+		str = ft_ulong_tobase(address, HEX);
 	if (format->flag_minus == 1 || format->neg_width == 1)
 	{
 		output_putstr(format, PREFIXHEX);
