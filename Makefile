@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/05 12:40:25 by rmartins          #+#    #+#              #
-#    Updated: 2021/03/09 12:34:26 by rmartins         ###   ########.fr        #
+#    Updated: 2021/03/09 18:59:52 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,41 +77,6 @@ re: fclean all
 bonus: all
 	
 .PHONY: all clean fclean
-
-lib:
-	$(MAKE) -C libft
-
-norm:
-	@echo $(ANSI_B_RED) "norminette v3" $(ANSI_RESET)
-	@norminette $(HEADER) $(addprefix src/,$(SRC))
-
-norm2:
-	@echo $(ANSI_B_RED) "norminette v2" $(ANSI_RESET)
-	@norminette2 $(HEADER) $(addprefix src/,$(SRC))
-
-libnorm:
-	@echo $(ANSI_B_RED) "libft norminette" $(ANSI_RESET)
-	$(MAKE) norm -C libft
-
-libnorm2:
-	@echo $(ANSI_B_RED) "libft norminette v2" $(ANSI_RESET)
-	$(MAKE) norm2 -C libft
-
-run: all
-	@echo $(ANSI_B_RED) "Running for debbuger without sanitize" $(ANSI_RESET)
-	@gcc $(CFLAGS) -g main.c $(NAME) && ./a.out
-
-runv: all runs run
-	@echo $(ANSI_B_RED) "Valgrind RESULT" $(ANSI_RESET)
-	valgrind -q --leak-check=full --track-origins=yes --show-leak-kinds=all ./a.out
-
-runs: all
-	@echo $(ANSI_B_RED) "Running with sanitize" $(ANSI_RESET)
-	@gcc $(CFLAGS) -g3 -fsanitize=address main.c $(NAME) && ./a.out && rm a.out
-
-rune: all
-	@echo $(ANSI_B_RED) "Running without flag ERROR" $(ANSI_RESET)
-	@gcc $(CFLAGSERROR) -g3 -fsanitize=address main.c $(NAME) && ./a.out
 
 # colors
 ANSI_RESET = "\033[0m"
