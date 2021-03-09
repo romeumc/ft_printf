@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 21:56:23 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/09 13:56:12 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 14:43:50 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ char		*tobase_upper_lower(t_format *format, char *type,
 			format->flag_cardinal = 20;
 		str = ft_ulong_tobase(d, HEXCAP);
 	}
+	else
+		str = "";
 	return (str);
 }
 

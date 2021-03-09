@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/09 12:33:57 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 18:19:25 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct	s_format
 	int		modifier_h;
 	size_t	output_length;
 	char	*output;
+	int		exp_counter;
 }				t_format;
 
 int				ft_printf(const char *fmt, ...);
@@ -77,7 +78,7 @@ void			conversion_hex(t_format *format, va_list ap, char *type);
 void			conversion_nchars(t_format *format, va_list ap);
 void			conversion_unsigned_int(t_format *format, va_list ap);
 void			conversion_float(t_format *format, va_list ap);
-void			conversion_engenier(t_format *format, va_list ap);
+void			conversion_engineer(t_format *format, va_list ap);
 
 void			conversion_uhh(t_format *format, va_list ap);
 void			conversion_hhn(t_format *format, va_list ap);
@@ -88,4 +89,7 @@ void			print_string_zero(t_format *format, char *str);
 void			print_float(t_format *format, char *str);
 double			ft_bankersround(t_format *format, double f);
 char			*get_decimalpart(t_format *format, double f);
+void			check_float_precision(t_format *format);
+char			*get_integer_fromfloat(t_format *format, double f);
+char			*get_str_decimal(t_format *format, double f);
 #endif

@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 23:03:02 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/09 01:38:22 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 18:19:51 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_list(t_format *format, int size, int flag)
 	format->negative_nb = 0;
 	format->modifier_h = 0;
 	format->modifier_l = 0;
+	format->exp_counter = 0;
 	if (flag == 0)
 		format->output = "";
 }

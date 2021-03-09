@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/09 01:46:49 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 16:38:36 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ void		make_conversion(t_format *format, va_list ap)
 		conversion_nchars(format, ap);
 	if (ft_strequ(format->conversion, "float"))
 		conversion_float(format, ap);
-	if (ft_strequ(format->conversion, "engenier"))
-		conversion_engenier(format, ap);
+	if (ft_strequ(format->conversion, "engineer"))
+		conversion_engineer(format, ap);
 }
 
 char		*get_convertion(char fmt_char)
@@ -117,7 +117,7 @@ char		*get_convertion(char fmt_char)
 	if (fmt_char == 'f')
 		return ("float");
 	if (fmt_char == 'e')
-		return ("engenier");
+		return ("engineer");
 	else
 		return (NULL);
 }
