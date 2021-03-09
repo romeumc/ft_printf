@@ -6,111 +6,11 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 19:42:42 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/09 02:35:06 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 13:08:56 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
 #include "../include/ft_printf.h"
-
-static void	print_float(t_format *format, char *str)
-{
-	if (format->flag_minus == 1 || format->neg_width == 1)
-	{
-		treat_flags(format, str);
-		output_putstr(format, str);
-		if (format->flag_plus == 1)
-			treat_width(format, ft_strlen(str) + format->flag_plus);
-		else if (format->flag_space == 1)
-			treat_width(format, ft_strlen(str) + format->flag_space);
-		else
-			treat_width(format, ft_strlen(str) + format->negative_nb);
-	}
-	else
-	{
-		if (format->flag_zero == 1)
-		{
-			treat_flags(format, str);
-			if (format->flag_plus == 1)
-				treat_width(format, ft_strlen(str) + format->flag_plus);
-			else if (format->flag_space == 1)
-				treat_width(format, ft_strlen(str) + format->flag_space);
-			else
-				treat_width(format, ft_strlen(str) + format->negative_nb);
-			output_putstr(format, str);
-		}
-		else
-		{
-			if (format->flag_plus == 1)
-				treat_width(format, ft_strlen(str) + format->flag_plus);
-			else if (format->flag_space == 1)
-				treat_width(format, ft_strlen(str) + format->flag_space);
-			else
-				treat_width(format, ft_strlen(str) + format->negative_nb);
-			treat_flags(format, str);
-			output_putstr(format, str);
-		}
-	}
-}
-
-
-static double	ft_bankersround(t_format *format, double f)
-{
-	double	roundincrement;
-	double	decimal;
-	long long	integer;
-
-	integer = (long long)f;
-	decimal = f - (long long)f;
-	if (decimal < 0)
-		decimal *= -1;
-	roundincrement = (5.0 / ft_iterative_power_ll(10, format->precision_size + 1));
-	if (decimal != 0)
-	{
-		if (decimal - roundincrement != 0 || integer % 2 != 0)
-		{
-			if (f < 0)
-				f -= roundincrement;
-			else
-				f += roundincrement;
-		}
-	}
-	return (f);
-}
-
-static char	*get_decimalpart(t_format *format, double f)
-{
-	double	roundincrement;
-	char	*str_decimal;
-	char	*temp;
-	int		i;
-	double	decimal;
-
-	decimal = f - (long long)f;
-	
-		if (decimal < 0)
-			decimal *= -1;
-		roundincrement = (5.0 / ft_iterative_power_ll(10, format->precision_size + 1));
-		decimal += roundincrement;
-		i = 0;
-		temp = malloc(sizeof(char) * (format->precision_size + 1));
-		if (temp != NULL)
-		{
-			while (i < format->precision_size)
-			{
-				if (f == (long long)f)
-					decimal = 0;
-				else
-					decimal = decimal * 10 - ((int)decimal * 10);
-				temp[i] = ((int)decimal) + '0';
-				i++;
-			}
-			temp[i] = '\0';
-		}
-		str_decimal = ft_strdup(temp);
-	free (temp);
-	return (str_decimal);
-}
 
 static int	isnan(double num)
 {
@@ -145,7 +45,7 @@ char	*get_exponent(int i)
 		else
 			e_sign = "e+";
 	}
-	counter = ft_itoa(i);	
+	counter = ft_itoa(i);
 	exp = ft_strjoin(e_sign, counter);
 	free(counter);
 	return (exp);
@@ -163,7 +63,7 @@ int		reduce_tounit(double *f, int i)
 			{
 				*f /= 10;
 				i++;
-				break;
+				break ;
 			}
 		}
 		while (*f <= -10.0 || *f >= 10.0)

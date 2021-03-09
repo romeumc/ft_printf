@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_output.c                                     :+:      :+:    :+:   */
+/*   treat_conversion_string_zero.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/25 16:51:35 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/09 13:11:34 by rmartins         ###   ########.fr       */
+/*   Created: 2021/03/09 12:32:45 by rmartins          #+#    #+#             */
+/*   Updated: 2021/03/09 12:35:18 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-void	output_putchar(t_format *format, char c)
+void	print_string_zero(t_format *format, char *str)
 {
-	format->output_length++;
-	ft_putchar(c);
-}
-
-void	output_putstr(t_format *format, char *str)
-{
-	format->output_length += ft_strlen(str);
-	ft_putstr(str);
-}
-
-void	output_putnstr(t_format *format, char *str, int output_len)
-{
-	format->output_length += output_len;
-	ft_putnstr(str, format->precision_size);
+	if (format->flag_minus == 1)
+	{
+		precheck_flags(format, str);
+		treat_flags(format, str);
+		format->flag_minus = 1;
+		treat_width(format, ft_strlen(str) - format->flag_minus);
+	}
+	else
+	{
+		precheck_flags(format, str);
+		format->flag_minus = 1;
+		treat_width(format, ft_strlen(str) - format->flag_minus);
+		treat_flags(format, str);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/09 02:45:01 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 12:33:57 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void			output_putchar(t_format *format, char c);
 void			output_putstr(t_format *format, char *str);
 void			output_putnstr(t_format *format, char *str, int output_len);
 
-void			print_string(t_format *format, char *str);
 void			treat_width(t_format *format, size_t len);
 void			treat_precision_decimal(t_format *format, size_t len);
 void			treat_width_dec(t_format *format, int len);
@@ -84,4 +83,9 @@ void			conversion_uhh(t_format *format, va_list ap);
 void			conversion_hhn(t_format *format, va_list ap);
 char			*conversion_hhd(t_format *format, va_list ap);
 
+void			print_string(t_format *format, char *str);
+void			print_string_zero(t_format *format, char *str);
+void			print_float(t_format *format, char *str);
+double			ft_bankersround(t_format *format, double f);
+char			*get_decimalpart(t_format *format, double f);
 #endif

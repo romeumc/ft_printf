@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_conversion.c                                 :+:      :+:    :+:   */
+/*   treat_conversion_string_decimal.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 17:02:34 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/09 02:43:59 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 12:33:33 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,20 +116,7 @@ void		print_string(t_format *format, char *str)
 	else if (ft_strequ(str, "0") && ft_strequ(format->conversion, "decimal")
 		&& format->precision_size == 0)
 	{
-		if (format->flag_minus == 1)
-		{
-			precheck_flags(format, str);
-			treat_flags(format, str);
-			format->flag_minus = 1;
-			treat_width(format, ft_strlen(str) - format->flag_minus);
-		}
-		else
-		{
-			precheck_flags(format, str);
-			format->flag_minus = 1;
-			treat_width(format, ft_strlen(str) - format->flag_minus);
-			treat_flags(format, str);
-		}
+		print_string_zero(format, str);
 	}
 	else
 	{
