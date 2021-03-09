@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   print_output.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 16:51:35 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/26 16:35:31 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 02:30:31 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,21 @@
 
 void	output_putchar(t_format *format, char c)
 {
-	format->output_lenght++;
+	format->output_length++;
 	ft_putchar(c);
 }
 
 void	output_putstr(t_format *format, char *str)
 {
-	format->output_lenght += ft_strlen(str);
+	format->output_length += ft_strlen(str);
 	ft_putstr(str);
 }
 
 void	output_putnstr(t_format *format, char *str, int output_len)
 {
-	format->output_lenght += output_len;
+	format->output_length += output_len;
 	ft_putnstr(str, format->precision_size);
 }
-
-
 
 // void	output_putchar(t_format *format, char c)
 // {
@@ -50,7 +48,7 @@ void	output_putnstr(t_format *format, char *str, int output_len)
 // 	//format->output = ft_strjoin(temp, str);
 // 	format->output = ft_strcat(temp, str);
 // 	free(temp);
-// 	printf("output:%s | %ld ==> %ld\n", format->output, ft_strlen(format->output), malloc_usable_size(format->output));
+// 	//printf("output:%s | %ld ==> %ld\n", format->output, ft_strlen(format->output), malloc_usable_size(format->output));
 // }
 
 // void	output_putnstr(t_format *format, char *str, int output_len)
@@ -63,7 +61,7 @@ void	output_putnstr(t_format *format, char *str, int output_len)
 // 	printf("temp:%s | %ld \t\t\t temp1:%s | %ld", temp, ft_strlen(temp), temp1, ft_strlen(temp1));
 // 	format->output = ft_strjoin(temp, temp1);
 
-// 	format->output_lenght += output_len;
+// 	format->output_length += output_len;
 // 	free(temp);
 // }
  

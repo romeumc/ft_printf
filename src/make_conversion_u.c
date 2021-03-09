@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 16:33:58 by rmartins          #+#    #+#             */
-/*   Updated: 2021/02/28 23:57:05 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 02:37:39 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,6 @@ static void	conversion_uh(t_format *format, va_list ap)
 	else
 		str = ft_utoa(d);
 	format->conversion = "decimal";
-	print_string(format, str);
-	free(str);
-}
-
-static void	conversion_uhh(t_format *format, va_list ap)
-{
-	int				d;
-	char			*str;
-
-	d = (char)va_arg(ap, unsigned int);
-	if (d == 0)
-		str = ft_strdup("0");
-	else if (d == -1)
-		str = ft_strdup("255");
-	else
-		str = ft_itoa(d + 0);
 	print_string(format, str);
 	free(str);
 }

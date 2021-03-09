@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 19:42:42 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/06 15:43:58 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 02:38:27 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,6 @@ static char	*conversion_hd(t_format *format, va_list ap)
 	return (ft_itoa(d));
 }
 
-static char	*conversion_hhd(t_format *format, va_list ap)
-{
-	int	d;
-
-	d = (char)va_arg(ap, int);
-	if (d < 0)
-		format->negative_nb = 1;
-	return (ft_itoa(d + 0));
-}
-
 void		conversion_int(t_format *format, va_list ap)
 {
 	char	*str;
@@ -80,13 +70,9 @@ void		conversion_int(t_format *format, va_list ap)
 	else
 		temp = ft_strdup("");
 	if (format->negative_nb == 1)
-	{
 		str = ft_substr(temp, 1, ft_strlen(temp) - 1);
-	}
 	else
-	{
-			str = ft_strdup(temp);
-	}
+		str = ft_strdup(temp);
 	free(temp);
 	print_string(format, str);
 	free(str);

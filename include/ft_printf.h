@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:53:46 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/08 21:59:53 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 02:45:01 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define PREFIXHEX "0x"
 # define HEX "0123456789abcdef"
 # define HEXCAP "0123456789ABCDEF"
-# define LENGHTMODIFIER "lh"
+# define LENGTHMODIFIER "lh"
 
 typedef struct	s_format
 {
@@ -52,7 +52,7 @@ typedef struct	s_format
 	int		negative_nb;
 	int		modifier_l;
 	int		modifier_h;
-	size_t	output_lenght;
+	size_t	output_length;
 	char	*output;
 }				t_format;
 
@@ -66,10 +66,11 @@ void			output_putnstr(t_format *format, char *str, int output_len);
 void			print_string(t_format *format, char *str);
 void			treat_width(t_format *format, size_t len);
 void			treat_precision_decimal(t_format *format, size_t len);
-void			treat_width_decimal(t_format *format, int len);
+void			treat_width_dec(t_format *format, int len);
 void			treat_flags(t_format *format, char *str);
 void			precheck_flags(t_format *format, char *str);
 
+char			*get_convertion(char fmt_char);
 void			make_conversion(t_format *format, va_list ap);
 void			conversion_int(t_format *format, va_list ap);
 void			conversion_string(t_format *format, va_list ap);
@@ -79,6 +80,8 @@ void			conversion_unsigned_int(t_format *format, va_list ap);
 void			conversion_float(t_format *format, va_list ap);
 void			conversion_engenier(t_format *format, va_list ap);
 
-void			print_hex_cardinal(t_format *format, char *str);
+void			conversion_uhh(t_format *format, va_list ap);
+void			conversion_hhn(t_format *format, va_list ap);
+char			*conversion_hhd(t_format *format, va_list ap);
 
 #endif

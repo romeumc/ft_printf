@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:06:29 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/08 21:59:19 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 01:46:49 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,32 @@ void		make_conversion(t_format *format, va_list ap)
 		conversion_float(format, ap);
 	if (ft_strequ(format->conversion, "engenier"))
 		conversion_engenier(format, ap);
+}
+
+char		*get_convertion(char fmt_char)
+{
+	if (fmt_char == 's')
+		return ("string");
+	if (fmt_char == 'd' || fmt_char == 'i')
+		return ("decimal");
+	if (fmt_char == 'c')
+		return ("char");
+	if (fmt_char == '%')
+		return ("percentage");
+	if (fmt_char == 'p')
+		return ("pointer");
+	if (fmt_char == 'u')
+		return ("unsigned_int");
+	if (fmt_char == 'x')
+		return ("hex");
+	if (fmt_char == 'X')
+		return ("heX");
+	if (fmt_char == 'n')
+		return ("n_chars");
+	if (fmt_char == 'f')
+		return ("float");
+	if (fmt_char == 'e')
+		return ("engenier");
+	else
+		return (NULL);
 }

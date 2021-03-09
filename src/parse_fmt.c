@@ -6,39 +6,11 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:48:09 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/08 22:02:53 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 01:47:44 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-
-static char	*get_convertion(char fmt_char)
-{
-	if (fmt_char == 's')
-		return ("string");
-	if (fmt_char == 'd' || fmt_char == 'i')
-		return ("decimal");
-	if (fmt_char == 'c')
-		return ("char");
-	if (fmt_char == '%')
-		return ("percentage");
-	if (fmt_char == 'p')
-		return ("pointer");
-	if (fmt_char == 'u')
-		return ("unsigned_int");
-	if (fmt_char == 'x')
-		return ("hex");
-	if (fmt_char == 'X')
-		return ("heX");
-	if (fmt_char == 'n')
-		return ("n_chars");
-	if (fmt_char == 'f')
-		return ("float");
-	if (fmt_char == 'e')
-		return ("engenier");
-	else
-		return (NULL);
-}
 
 static void	get_flags(char fmt_char, t_format *format)
 {
@@ -86,6 +58,14 @@ static void	get_precision(char fmt_char, t_format *format, va_list ap)
 		format->precision = 1;
 }
 
+static void	get_length(char fmt_char, t_format *format)
+{
+	if (fmt_char == 'l')
+		format->modifier_l++;
+	if (fmt_char == 'h')
+		format->modifier_h++;
+}
+
 void		parse_fmt(size_t *i, const char *fmt, t_format *format, va_list ap)
 {
 	*i += 1;
@@ -104,14 +84,12 @@ void		parse_fmt(size_t *i, const char *fmt, t_format *format, va_list ap)
 		get_precision(fmt[*i], format, ap);
 		*i += 1;
 	}
-	while (ft_strchr(LENGHTMODIFIER, fmt[*i]))
+	while (ft_strchr(LENGTHMODIFIER, fmt[*i]))
 	{
 		if (format->modifier_h == 2 || format->modifier_l == 2)
 			break ;
-		if (fmt[*i] == 'l')
-			format->modifier_l++;
-		if (fmt[*i] == 'h')
-			format->modifier_h++;
+		else
+			get_length(fmt[*i], format);
 		*i += 1;
 	}
 	format->conversion = get_convertion(fmt[*i]);

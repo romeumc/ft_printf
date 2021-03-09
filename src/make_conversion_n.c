@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 23:58:18 by rmartins          #+#    #+#             */
-/*   Updated: 2021/03/06 21:42:06 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/03/09 02:37:58 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	conversion_n(t_format *format, va_list ap)
 	int *ptr;
 
 	ptr = va_arg(ap, void *);
-	*ptr = (int)format->output_lenght;
+	*ptr = (int)format->output_length;
 }
 
 static void	conversion_ln(t_format *format, va_list ap)
@@ -25,7 +25,7 @@ static void	conversion_ln(t_format *format, va_list ap)
 	long int *ptr;
 
 	ptr = va_arg(ap, void *);
-	*ptr = (long int)format->output_lenght;
+	*ptr = (long int)format->output_length;
 }
 
 static void	conversion_lln(t_format *format, va_list ap)
@@ -33,7 +33,7 @@ static void	conversion_lln(t_format *format, va_list ap)
 	long long int *ptr;
 
 	ptr = va_arg(ap, void *);
-	*ptr = (long long int)format->output_lenght;
+	*ptr = (long long int)format->output_length;
 }
 
 static void	conversion_hn(t_format *format, va_list ap)
@@ -41,15 +41,7 @@ static void	conversion_hn(t_format *format, va_list ap)
 	short int	*ptr;
 
 	ptr = va_arg(ap, void *);
-	*ptr = (short int)format->output_lenght;
-}
-
-static void	conversion_hhn(t_format *format, va_list ap)
-{
-	char	*ptr;
-
-	ptr = va_arg(ap, void *);
-	*ptr = (char)format->output_lenght;
+	*ptr = (short int)format->output_length;
 }
 
 void		conversion_nchars(t_format *format, va_list ap)
